@@ -5,14 +5,13 @@ import { grommet } from 'grommet/themes';
 function App() {
   return (
     <Grommet theme={grommet}>
-      <Header background="dark-1" pad="xsmall" height="xsmall">
+      <Header background="dark-2" pad="xsmall" height="xsmall">
         <Heading level='1' size='small'>
-          Show yourself
+          <Anchor
+            href="#"
+            label="Astronomy Picture of Day"
+          />
         </Heading>
-        <Anchor
-          href="#"
-          label="sample"
-        />
       </Header>
     </Grommet>
   )
