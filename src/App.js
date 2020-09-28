@@ -1,21 +1,42 @@
 import React from 'react';
-import { Grommet } from 'grommet';
+import { Grommet, Box, ResponsiveContext, Heading } from 'grommet';
 
-const theme = {
+const customBreakpoints = {
   global: {
-    font: {
-      family: 'Roboto',
-      size: '18px',
-      height: '20px',
+    breakpoints: {
+      small: {
+        value: 568,
+        edgeSize: {
+          none: '0px',
+          small: '6px',
+          medium: '12px',
+          large: '24px',
+        },
+      },
+      large: {
+        value: 1024,
+        edgeSize: {
+          none: '0px',
+          small: '12px',
+          medium: '24px',
+          large: '48px',
+        },
+      },
     },
   },
 };
 
 function App() {
   return ( 
-  <Grommet theme={theme}>
-    god this is difficult TT
-    
+    <Grommet theme={customBreakpoints} full>
+    <ResponsiveContext.Consumer>
+      {size => (
+        <Box fill background="dark-1">
+          {/* <Heading>{`Hi, I'm ${size}, resize me!`}</Heading> */}
+          My name is Doldol
+        </Box>
+      )}
+    </ResponsiveContext.Consumer>
   </Grommet>
   )
 }
