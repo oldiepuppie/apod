@@ -50,15 +50,8 @@ function App() {
   };
 
   return (
-    <Grommet theme={grommet}>
-      <ResponsiveContext.Consumer>
-        {size => (
-          <Box fill background="brand">
-            <Heading>{`Hi, I'm ${size}, resize me!`}</Heading>
-          </Box>
-        )}
-      </ResponsiveContext.Consumer>
-      <Header background="dark-2" pad="xsmall" height="xsmall">
+    <Grommet theme={grommet, customBreakpoints} full>
+      <Header background="dark-1" pad="xsmall" height="xsmall">
         <Heading level='1' size='small'>
           <Anchor
             href="#"
@@ -66,6 +59,13 @@ function App() {
           />
         </Heading>
       </Header>
+      <ResponsiveContext.Consumer>
+        {size => (
+          <Box fill background="dark-2">
+            <Heading>{`Hi, I'm ${size}, resize me!`}</Heading>
+          </Box>
+        )}
+      </ResponsiveContext.Consumer>
     </Grommet>
   )
 }
