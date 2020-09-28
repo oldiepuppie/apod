@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grommet, Header } from 'grommet';
+import { Grommet, Header, Anchor } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 // const customBreakpoints = {
 //   global: {
@@ -51,9 +52,9 @@ function App() {
   return ( 
     <div>
       <Grommet theme={grommet}>
-        <Header background="dark-1" pad="large" height="small">
+        <Header background="dark-1" pad="xsmall" height="xsmall">
           <Anchor
-            href="https://tools.grommet.io/"
+            href="#"
             label="sample"
           />
         </Header>
