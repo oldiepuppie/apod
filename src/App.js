@@ -1,8 +1,20 @@
 import React from 'react';
-import { Anchor, Box, Grommet, Header, Heading, ResponsiveContext } from 'grommet';
+import {
+  Anchor,
+  Box,
+  Grommet,
+  Header,
+  Heading,
+  MaskedInput,
+  ResponsiveContext
+} from 'grommet';
 import { grommet } from 'grommet/themes';
 
 function App() {
+  const daysInMonth = month => new Date(2019, month, 0).getDate();
+  const DateMaskedInput = () => {
+    const [value, setValue] = React.useState('');
+
   const customBreakpoints = {
     global: {
       breakpoints: {
@@ -60,6 +72,8 @@ function App() {
           />
         </Heading>
       </Header>
+
+
 
       <ResponsiveContext.Consumer>
         {size => (
