@@ -11,10 +11,6 @@ import {
 import { grommet } from 'grommet/themes';
 
 function App() {
-  const daysInMonth = month => new Date(2019, month, 0).getDate();
-  const DateMaskedInput = () => {
-    const [value, setValue] = React.useState('');
-
   const customBreakpoints = {
     global: {
       breakpoints: {
