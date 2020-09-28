@@ -51,14 +51,16 @@ function App() {
 
   return (
     <Grommet theme={grommet, customBreakpoints} full>
-      <Header background="dark-1" pad="xsmall" height="xsmall">
-        <Heading level='1' size='small'>
+      <Header background='dark-1' pad='xsmall' height='xsmall'>
+        <Heading  level='1' size='small'>
           <Anchor
-            href="#"
-            label="Astronomy Picture of Day"
+            color='accent-3'
+            href='#'
+            label='Astronomy Picture of Day'
           />
         </Heading>
       </Header>
+
       <ResponsiveContext.Consumer>
         {size => (
           <Box fill background="dark-2">
