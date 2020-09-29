@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Anchor,
-  Box,
-  Grommet,
-  Header,
-  Heading,
-  MaskedInput,
-  ResponsiveContext
-} from 'grommet';
+import { Anchor, Box, Grommet, Header, Heading, MaskedInput, ResponsiveContext } from 'grommet';
 import { grommet } from 'grommet/themes';
 
 function App() {
@@ -58,28 +50,22 @@ function App() {
   };
 
   return (
-    <Grommet theme={grommet, customBreakpoints} full>
+    <Grommet theme={(grommet, customBreakpoints)} full>
       <Header background='dark-1' pad='xsmall' height='xsmall'>
-        <Heading  level='1' size='small'>
-          <Anchor
-            color='accent-3'
-            href='#'
-            label='Astronomy Picture of Day'
-          />
+        <Heading level='1' size='small'>
+          <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
         </Heading>
       </Header>
 
-
-
       <ResponsiveContext.Consumer>
-        {size => (
-          <Box fill background="dark-2">
+        {(size) => (
+          <Box fill background='dark-2'>
             <Heading>{`Hi, I'm ${size}, resize me!`}</Heading>
           </Box>
         )}
       </ResponsiveContext.Consumer>
     </Grommet>
-  )
+  );
 }
 
 export default App;
