@@ -1,16 +1,10 @@
 import React from 'react';
-import { Box, Grommet, Heading, ResponsiveContext } from 'grommet';
+import { Main } from 'grommet';
 
-function Background() {
-  return (
-    <ResponsiveContext.Consumer>
-      {size => (
-        <Box fill background="dark-2">
-          <Heading>{`Hi, I'm ${size}, resize me!`}</Heading>
-        </Box>
-      )}
-    </ResponsiveContext.Consumer>
-  )
-}
+const Background = () => {
+  <Main full pad='small' background='dark-2'>
+    I am Main! Main is a good place to place your content.
+  </Main>;
+};
 
-export default Background
+export default Background;

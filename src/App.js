@@ -1,69 +1,32 @@
-import React from 'react';
-import { Anchor, Box, Grommet, Header, Heading, MaskedInput, ResponsiveContext } from 'grommet';
+import { Anchor, Box, DateInput, Grommet, Header, Heading, Main } from 'grommet';
 import { grommet } from 'grommet/themes';
+import React from 'react';
 
 function App() {
-  const customBreakpoints = {
-    global: {
-      breakpoints: {
-        xsmall: {
-          value: 375,
-        },
-        small: {
-          value: 568,
-          edgeSize: {
-            none: '0px',
-            small: '6px',
-            medium: '12px',
-            large: '24px',
-          },
-        },
-        medium: {
-          value: 768,
-          edgeSize: {
-            none: '0px',
-            small: '12px',
-            medium: '24px',
-            large: '48px',
-          },
-        },
-        large: {
-          value: 1024,
-          edgeSize: {
-            none: '0px',
-            small: '12px',
-            medium: '24px',
-            large: '48px',
-          },
-        },
-        xlarge: {
-          value: 1366,
-          edgeSize: {
-            none: '0px',
-            small: '12px',
-            medium: '24px',
-            large: '48px',
-          },
-        },
-      },
-    },
+  const [value, setValue] = React.useState('');
+  const onChange = (event) => {
+    const nextValue = event.value;
+    console.log('onChange', nextValue);
+    setValue(nextValue);
   };
 
   return (
-    <Grommet theme={(grommet, customBreakpoints)} full>
+    <Grommet theme={grommet} full>
       <Header background='dark-1' pad='xsmall' height='xsmall'>
         <Heading level='1' size='small'>
           <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
         </Heading>
       </Header>
 
-      <ResponsiveContext.Consumer>
-        {(size) => (
-          <Box fill background='dark-2'>
-            <Heading>{`Hi, I'm ${size}, resize me!`}</Heading>
-          </Box>
-        )}
-      </ResponsiveContext.Consumer>
+      <Box align='center' pad='large' background='dark-2'>
+        <Box width='medium' background='light-1'>
+          <DateInput format='mm/dd/yyyy' value={value} onChange={onChange} />
+        </Box>
+      </Box>
+
+      <Main full background='dark-2' pad='small'>
+        Main
+      </Main>
     </Grommet>
   );
 }
