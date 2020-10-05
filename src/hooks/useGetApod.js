@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-// The value is never read - Why??
 
 const useGetApod = (date) => {
-  const [isGetApodLoading, setIsGetApodLoading] = useState(true);
-  // The value is never read - Why??
+  const [isGetApodLoading, setIsGetApodLoading] = useState(false);
   const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);
   const [data, setData] = useState([]);
 
@@ -11,10 +9,10 @@ const useGetApod = (date) => {
     if (!date) return;
 
     const getApod = async () => {
-      // setIsGetApodLoading(true); //no need to write this again?
-      // setIsGetApodLoaded(false); //no need to write this again?
+      setIsGetApodLoading(true);
+
       const response = await fetch(
-        'https://api.nasa.gov/planetary/apod?api_key=Dl8DvUKGx1teO8CLLrBhEdseafuTJSwkQZfEXu3L&date=${date}'
+        `https://api.nasa.gov/planetary/apod?api_key=Dl8DvUKGx1teO8CLLrBhEdseafuTJSwkQZfEXu3L&date=${date}`
       );
       const data = await response.json();
 
@@ -26,7 +24,7 @@ const useGetApod = (date) => {
     getApod();
   }, [date]);
 
-  return { isGetApodLoaded, data };
+  return { isGetApodLoading, isGetApodLoaded, data };
 };
 
-export default App; // Do I have to use this??
+export default useGetApod;
