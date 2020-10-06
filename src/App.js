@@ -1,6 +1,6 @@
 import { Anchor, Box, DateInput, Grommet, Header, Heading, Main, Image } from 'grommet';
 import { grommet } from 'grommet/themes';
-import React from 'react';
+import React, { useState } from 'react';
 import useGetApod from './hooks/useGetApod'; // APOD
 
 function App() {
@@ -8,11 +8,12 @@ function App() {
   const test_data = useGetApod('2019-12-31');
   console.log(test_data);
   // APOD tester end
-  const [value, setValue] = React.useState('');
-  const onChange = (event) => {
-    const nextValue = event.value;
-    console.log('onChange', nextValue);
-    setValue(nextValue);
+
+  const [date, setDate] = useState(new Date().toISOString());
+  const onDateInputChange = (event) => {
+    const nextDate = event.value;
+    console.log('onDateInputChange', nextDate);
+    setDate(nextDate);
   };
 
   return (
@@ -22,9 +23,10 @@ function App() {
           <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
         </Heading>
       </Header>
+
       <Box align='center' pad='large' background='dark-2'>
         <Box width='medium' background='light-1'>
-          <DateInput format='mm/dd/yyyy' value={value} onChange={onChange} />
+          <DateInput format='mm/dd/yyyy' value={date} onChange={onDateInputChange} />
         </Box>
       </Box>
 
