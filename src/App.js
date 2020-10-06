@@ -4,7 +4,8 @@ import useGetApod from './hooks/useGetApod';
 import React from 'react';
 
 function App() {
-  console.log(useGetApod(2019 - 12 - 31));
+  const test_data = useGetApod('2019-12-31');
+  console.log(test_data);
   const [value, setValue] = React.useState('');
   const onChange = (event) => {
     const nextValue = event.value;
@@ -27,7 +28,7 @@ function App() {
 
       <Main full background='dark-2' pad='small'>
         <Box height='small' width='small'>
-          <Image fit='cover' src='//v2.grommet.io/assets/Wilderpeople_Ricky.jpg' />
+          <Image fit='cover' src={test_data.data.url}></Image>
         </Box>
       </Main>
     </Grommet>

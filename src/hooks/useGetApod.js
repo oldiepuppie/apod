@@ -12,7 +12,7 @@ const useGetApod = (date) => {
       setIsGetApodLoading(true);
 
       const response = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=Dl8DvUKGx1teO8CLLrBhEdseafuTJSwkQZfEXu3L&date=${date}`
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`
       );
       const data = await response.json();
 
