@@ -1,8 +1,13 @@
-import { Anchor, Box, DateInput, Grommet, Header, Heading, Main } from 'grommet';
+import { Anchor, Box, DateInput, Grommet, Header, Heading, Main, Image } from 'grommet';
 import { grommet } from 'grommet/themes';
 import React from 'react';
+import useGetApod from './hooks/useGetApod'; // APOD
 
 function App() {
+  // APOD tester start
+  const test_data = useGetApod('2019-12-31');
+  console.log(test_data);
+  // APOD tester end
   const [value, setValue] = React.useState('');
   const onChange = (event) => {
     const nextValue = event.value;
@@ -23,7 +28,11 @@ function App() {
         </Box>
       </Box>
 
-      <Main full background='dark-2' pad='small'></Main>
+      <Main full background='dark-2' pad='small'>
+        <Box height='small' width='small'>
+          <Image fit='cover' src={test_data.data.url}></Image>
+        </Box>
+      </Main>
     </Grommet>
   );
 }
