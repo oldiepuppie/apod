@@ -1,25 +1,11 @@
 import React from 'react';
-import { Box, DateInput } from 'grommet';
+import APOD from './components/date-view/APOD';
+import DatePicker from './components/date-view/DatePicker';
 
 const DateView = () => {
-  const DatePicker = () => {
-    const [date, setDate] = useState(new Date().toISOString());
-    const onDateInputChange = (event) => {
-      const nextDate = event.value;
-      console.log('onDateInputChange', nextDate);
-      setDate(nextDate);
-    };
-
-    return (
-      <Box align='center' pad='large' background='dark-2'>
-        <Box width='medium' background='light-1'>
-          <DateInput format='mm/dd/yyyy' value={date} onChange={onDateInputChange} />
-        </Box>
-      </Box>
-    );
-  };
-
-  DatePicker;
+  DatePicker();
+  const dateForEntry = date.substr(0, 10);
+  APOD(dateForEntry);
 };
 
 export default DateView;

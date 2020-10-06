@@ -4,17 +4,18 @@ import React, { useState } from 'react';
 import useGetApod from './hooks/useGetApod'; // APOD
 
 function App() {
-  // APOD tester start
-  const test_data = useGetApod('2019-12-31');
-  console.log(test_data);
-  // APOD tester end
-
   const [date, setDate] = useState(new Date().toISOString());
   const onDateInputChange = (event) => {
     const nextDate = event.value;
     console.log('onDateInputChange', nextDate);
     setDate(nextDate);
   };
+  console.log(date);
+
+  // APOD tester start
+  const test_data = useGetApod(date.substr(0, 10));
+  console.log(test_data);
+  // APOD tester end
 
   return (
     <Grommet theme={grommet} full>
@@ -30,11 +31,13 @@ function App() {
         </Box>
       </Box>
 
+      {/* APOD RETURN tester start */}
       <Main full background='dark-2' pad='small'>
         <Box height='small' width='small'>
           <Image fit='cover' src={test_data.data.url}></Image>
         </Box>
       </Main>
+      {/* APOD RETURN tester end */}
     </Grommet>
   );
 }
