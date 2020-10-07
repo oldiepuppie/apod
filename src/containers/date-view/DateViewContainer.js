@@ -13,13 +13,15 @@ const DateViewContainer = () => {
     setIsoDate(nextIsoDate);
   };
 
+  const dateForApod = `${isoDate.getFullYear()}-${isoDate.getMonth() + 1}-${isoDate.getDate()}`;
+
   useEffect(() => {
-    if (!isoDate) return;
+    if (!dateForApod) return;
 
     const getApod = async () => {
       setIsGetApodLoading(true);
       const response = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${dateForApod}`
       );
       const apodData = await response.json();
 
@@ -31,8 +33,6 @@ const DateViewContainer = () => {
     getApod();
   }, [isoDate]);
 
-  // apodData = { isGetApodLoading, isGetApodLoaded, data }
-
   return (
     <div>
       <dateInput />
@@ -42,7 +42,7 @@ const DateViewContainer = () => {
           explanation={apodData.data.explanation}
           media_type={apodData.data.media_type}
           title={apodData.data.title}
-          url={apodData.data.title}
+          url={apodData.data.url}
         />
       )}
     </div>
