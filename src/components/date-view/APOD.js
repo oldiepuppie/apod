@@ -1,19 +1,16 @@
 import { Box, Image } from 'grommet';
 import React from 'react';
-import useGetApod from './hooks/useGetApod';
 
-const APOD = (date) => {
-  const test_data = useGetApod(date);
-
+const APOD = ({ isoDate, explanation, media_type, title, url }) => {
   return (
     <div>
       <Box height='small' width='small'>
-        <Image fit='cover' src={test_data.data.url}></Image>
+        <Image fit='cover' src={data.props.url}></Image>
       </Box>
-      <Box>{test_data.data.title}</Box>
-      <Box>{test_data.data.date}</Box>
-      <Box>{test_data.data.explanation}</Box>
-      <Box>{test_data.data.media_type}</Box>
+      <Box>{data.props.title}</Box>
+      <Box>{data.props.isoDate}</Box>
+      <Box>{data.props.explanation}</Box>
+      <Box>{data.props.media_type}</Box>
     </div>
   );
 };
