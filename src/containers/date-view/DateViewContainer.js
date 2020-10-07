@@ -1,11 +1,11 @@
 import React from 'react';
 import APOD from './components/date-view/APOD';
-import useGetApod from './hooks/useGetApod';
+// import useGetApod from './hooks/useGetApod';
 
-const DateView = () => {
+const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
-  const [isGetLoading, setIsGetLoading] = useState(false);
-  const [isGetLoaded, setIsGetLoaded] = useState(false);
+  const [isGetApodLoading, setIsGetApodLoading] = useState(false);
+  const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);
   const [apodData, setApodData] = useState([]);
 
   const onDateInputChange = (event) => {
@@ -13,21 +13,40 @@ const DateView = () => {
     setIsoDate(nextIsoDate);
   };
 
-  const dateForApod = `${isoDate.getFullYear()}-${isoDate.getMonth() + 1}-${isoDate.getDate()}`;
-  const apodData = useGetApod(dateForApod);
+  useEffect(() => {
+    if (!isoDate) return;
+
+    const getApod = async () => {
+      setIsGetApodLoading(true);
+      const response = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`
+      );
+      const apodData = await response.json();
+
+      setIsGetApodLoading(false);
+      setIsGetApodLoaded(true);
+      setApodData(apodData);
+    };
+
+    getApod();
+  }, [isoDate]);
+
+  // apodData = { isGetApodLoading, isGetApodLoaded, data }
 
   return (
     <div>
       <dateInput />
-      <APOD
-        date={apodData.props.date}
-        explanation={apodData.props.explanation}
-        media_type={apodData.props.media_type}
-        title={apodData.props.title}
-        url={apodData.props.title}
-      />
+      {isGetApodLoading ? null : (
+        <APOD
+          date={apodData.data.date}
+          explanation={apodData.data.explanation}
+          media_type={apodData.data.media_type}
+          title={apodData.data.title}
+          url={apodData.data.title}
+        />
+      )}
     </div>
   );
 };
 
-export default DateView;
+export default DateViewContainer;
