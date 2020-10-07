@@ -1,6 +1,5 @@
 import React from 'react';
 import APOD from './components/date-view/APOD';
-// import useGetApod from './hooks/useGetApod';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
@@ -8,13 +7,16 @@ const DateViewContainer = () => {
   const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);
   const [apodData, setApodData] = useState([]);
 
+  // 날짜 입력
   const onDateInputChange = (event) => {
     const nextIsoDate = event.value;
     setIsoDate(nextIsoDate);
   };
 
+  // APOD parameter에 맞게 수정
   const dateForApod = `${isoDate.getFullYear()}-${isoDate.getMonth() + 1}-${isoDate.getDate()}`;
 
+  // dateForApod로 데이터를 불러옴
   useEffect(() => {
     if (!dateForApod) return;
 
@@ -37,6 +39,7 @@ const DateViewContainer = () => {
     <div>
       <dateInput />
       {isGetApodLoading ? null : (
+        //데이터가 로드되면 APOD 컴포넌트 실행
         <APOD
           date={apodData.data.date}
           explanation={apodData.data.explanation}
