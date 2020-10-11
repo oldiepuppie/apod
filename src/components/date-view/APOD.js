@@ -4,7 +4,7 @@ import React from 'react';
 const APOD = ({ date, explanation, media_type, title, url }) => {
   return (
     <div>
-      <Box height='small' width='small'>
+      <Box align='center' pad='large' background='dark-2'>
         <Image fit='cover' src={url}></Image>
       </Box>
       <Box>{title}</Box>
