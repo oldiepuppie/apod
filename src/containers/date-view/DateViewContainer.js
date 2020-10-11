@@ -1,7 +1,7 @@
-import { useState, React } from 'react';
-import useGetApod from './../../hooks/useGetApod';
-import { DateInput } from 'grommet';
+import { Box, DateInput } from 'grommet';
+import React, { useState } from 'react';
 import APOD from './../../components/date-view/APOD';
+import useGetApod from './../../hooks/useGetApod';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
@@ -40,14 +40,20 @@ const DateViewContainer = () => {
   
   return (
     <div>
-      <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange}/>
-      <APOD
-        date={apodData.data.date}
-        explanation={apodData.data.explanation}
-        media_type={apodData.data.media_type}
-        title={apodData.data.title}
-        url={apodData.data.url}
-      />
+      <Box align='center' pad='large' background='dark-2'>
+        <Box width='medium' background='light-1'>
+          <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
+        </Box>
+      </Box>
+      <Box align='center' pad='large' background='dark-2'>
+        <APOD
+          date={apodData.data.date}
+          explanation={apodData.data.explanation}
+          media_type={apodData.data.media_type}
+          title={apodData.data.title}
+          url={apodData.data.url}
+        />
+      </Box>
     </div>
   );
 };
