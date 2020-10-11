@@ -12,8 +12,11 @@ function App() {
   };
   console.log(date);
 
+  const dateInstance = new Date(date);
+  const dateForApod = `${dateInstance.getFullYear()}-${dateInstance.getMonth() + 1}-${dateInstance.getDate()}`;
+
   // APOD tester start
-  const test_data = useGetApod(date.substr(0, 10));
+  const test_data = useGetApod(dateForApod);
   console.log(test_data);
   // APOD tester end
 

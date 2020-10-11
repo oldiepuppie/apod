@@ -38,16 +38,13 @@ const DateViewContainer = () => {
   return (
     <div>
       <dateInput />
-      {isGetApodLoading ? null : (
-        //데이터가 로드되면 APOD 컴포넌트 실행
-        <APOD
-          date={apodData.data.date}
-          explanation={apodData.data.explanation}
-          media_type={apodData.data.media_type}
-          title={apodData.data.title}
-          url={apodData.data.url}
-        />
-      )}
+      <APOD
+        date={apodData.data.date}
+        explanation={apodData.data.explanation}
+        media_type={apodData.data.media_type}
+        title={apodData.data.title}
+        url={apodData.data.url}
+      />
     </div>
   );
 };
