@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import APOD from '/components/date-view/APOD';
+import APOD from '/components/date-view/APOD.js';
+import { DateInput } from 'grommet';
 import useGetApod from '/hooks/useGetApod';
 
 const DateViewContainer = () => {
@@ -39,7 +40,7 @@ const DateViewContainer = () => {
   
   return (
     <div>
-      <dateInput />
+      <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange}/>
       <APOD
         date={apodData.data.date}
         explanation={apodData.data.explanation}
