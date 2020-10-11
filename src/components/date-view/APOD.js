@@ -7,10 +7,6 @@ const APOD = ({ date, explanation, media_type, title, url }) => {
       <Box align='center' pad='large' background='dark-2'>
         <Image fit='cover' src={url}></Image>
       </Box>
-      <Box>{title}</Box>
-      <Box>{date}</Box>
-      <Box>{explanation}</Box>
-      <Box>{media_type}</Box>
     </div>
   );
 };
