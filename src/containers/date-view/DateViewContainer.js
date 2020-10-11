@@ -41,18 +41,13 @@ const DateViewContainer = () => {
         </Box>
       </Box>
       <Box align='center' pad='large' background='dark-2'>
-        <APOD
-          date={apodData.data.date}
-          explanation={apodData.data.explanation}
-          title={apodData.data.title}
-          url={apodData.data.url}
-        />
-      </Box>
-      <APODModal 
+        <APODModal 
         date={apodData.data.date}
         explanation={apodData.data.explanation}
         title={apodData.data.title}
-      />
+        url={apodData.data.url}
+        />
+      </Box>
     </div>
   );
 };
