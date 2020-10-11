@@ -2,7 +2,6 @@
 import { Box, Button, Layer } from 'grommet';
 import React, { useState } from 'react';
 
-
 const APODModal = ({ title, date, explanation, closeModal }) => {
   const [show, setShow] = useState();
 
@@ -16,10 +15,10 @@ const APODModal = ({ title, date, explanation, closeModal }) => {
               onClickOutside={() => setShow(false)}
             >    
               <Box align='center' pad='large' background='dark-1'>
-                <Box>{title}</Box>
-                <Box>{date}</Box>
-                <Box>{explanation}</Box>
-                <Box>{closeModal}</Box>
+                <Box pad='medium'>{title}</Box>
+                <Box pad='medium'>{date}</Box>
+                <Box pad='medium'>{explanation}</Box>
+                <Box pad='medium'>{closeModal}</Box>
               </Box>
               <Button label="close" onClick={() => setShow(false)} />
             </Layer>
