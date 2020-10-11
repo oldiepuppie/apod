@@ -1,8 +1,8 @@
 
-import { Box, Button, Layer, Image } from 'grommet';
+import { Box, Button, Layer, Image, Text } from 'grommet';
 import React, { useState } from 'react';
 
-const APODModal = ({ title, date, explanation, closeModal, url }) => {
+const APODModal = ({ title, date, explanation, url }) => {
   const [show, setShow] = useState();
 
   return (
@@ -13,14 +13,15 @@ const APODModal = ({ title, date, explanation, closeModal, url }) => {
             <Layer
               onEsc={() => setShow(false)}
               onClickOutside={() => setShow(false)}
-            >    
-              <Box align='center' pad='large' background='dark-1'>
-                <Box pad='medium'>{title}</Box>
-                <Box pad='medium'>{date}</Box>
-                <Box pad='medium'>{explanation}</Box>
-                <Box pad='medium'>{closeModal}</Box>
+            >
+              <Box align='center' pad='medium' background='dark-1'>
+                <Box pad='small'>{title}</Box>
+                <Box pad='small'>{date}</Box>
+                <Box pad='small'>{explanation}</Box>
               </Box>
-              <Button label="close" onClick={() => setShow(false)} />
+              <Box background='dark-1' pad='medium' align='center'>
+                <Text color='status-critical' onClick={() => setShow(false)}>X</Text>
+              </Box>
             </Layer>
           )}
         </Box>

@@ -21,9 +21,10 @@ const DateViewContainer = () => {
             ? dateInstance.getMonth() + 1
             : `${ '0' + (dateInstance.getMonth() + 1) }`;
   const dd = dateInstance.getDate() >= 10
-            ? dateInstance.getDate()
-            : `${ '0' + dateInstance.getDate() }`;
+            ? dateInstance.getDate() -1
+            : `${ '0' + (dateInstance.getDate()-1) }`;
   // 날짜를 YY-MM-DD로 표시하기 위한 변수 할당
+  // time zone 맞추기 필요 : 일단 day에 -1
   
   const dateForApod = `${yy}-${mm}-${dd}`;
   // YY-MM-DD
