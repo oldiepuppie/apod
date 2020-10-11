@@ -1,11 +1,9 @@
-import React from 'react';
-import APOD from './components/date-view/APOD';
+import React, { useState } from 'react';
+import APOD from '/components/date-view/APOD';
+import useGetApod from '/hooks/useGetApod';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
-  const [isGetApodLoading, setIsGetApodLoading] = useState(false);
-  const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);
-  const [apodData, setApodData] = useState([]);
 
   // 날짜 입력
   const onDateInputChange = (event) => {
@@ -13,28 +11,32 @@ const DateViewContainer = () => {
     setIsoDate(nextIsoDate);
   };
 
-  // APOD parameter에 맞게 수정
-  const dateForApod = `${isoDate.getFullYear()}-${isoDate.getMonth() + 1}-${isoDate.getDate()}`;
+  const dateInstance = new Date(isoDate);
+  console.log(dateInstance);
+  // 날짜를 데이트 형식으로 변환
 
-  // dateForApod로 데이터를 불러옴
-  useEffect(() => {
-    if (!dateForApod) return;
+  const yy = dateInstance.getFullYear();
+  const mm = dateInstance.getMonth() + 1 >= 10 
+            ? dateInstance.getMonth() + 1
+            : `${ '0' + (dateInstance.getMonth() + 1) }`;
+  const dd = dateInstance.getDate() >= 10
+            ? dateInstance.getDate()
+            : `${ '0' + dateInstance.getDate() }`;
+  console.log(yy);
+  console.log(mm);
+  console.log(dd);
+  // 날짜를 YY-MM-DD로 표시하기 위한 변수 할당
+  
+  const dateForApod = `${yy}-${mm}-${dd}`;
+  console.log(dateForApod);
+  // 위의 변수를 useGetApod 훅에 사용할 수 있도록 변환
 
-    const getApod = async () => {
-      setIsGetApodLoading(true);
-      const response = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${dateForApod}`
-      );
-      const apodData = await response.json();
+  // useGetApod start
+  const apodData = useGetApod(dateForApod);
+  console.log(apodData);
+  // useGetApod end
 
-      setIsGetApodLoading(false);
-      setIsGetApodLoaded(true);
-      setApodData(apodData);
-    };
-
-    getApod();
-  }, [isoDate]);
-
+  
   return (
     <div>
       <dateInput />
