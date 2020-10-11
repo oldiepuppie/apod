@@ -1,5 +1,5 @@
 
-import { Box, Button, Layer } from 'grommet';
+import { Box, Button, Layer, Image } from 'grommet';
 import React, { useState } from 'react';
 
 const APODModal = ({ title, date, explanation, closeModal }) => {
@@ -22,7 +22,7 @@ const APODModal = ({ title, date, explanation, closeModal }) => {
               </Box>
               <Button label="close" onClick={() => setShow(false)} />
             </Layer>
-          )};
+          )}
         </Box>
     </div>
   );

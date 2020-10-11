@@ -3,11 +3,12 @@ import { grommet } from 'grommet/themes';
 import React from 'react';
 import DateViewContainer from './containers/date-view/DateViewContainer';
 
+
 function App() {
 
   return (
     <Grommet theme={grommet} full>
-      
+
       <Header background='dark-1' pad='xsmall' height='xsmall'>
         <Heading level='1' size='small'>
           <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />

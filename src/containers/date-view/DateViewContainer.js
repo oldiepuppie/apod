@@ -2,6 +2,7 @@ import { Box, DateInput } from 'grommet';
 import React, { useState } from 'react';
 import APOD from './../../components/date-view/APOD';
 import useGetApod from './../../hooks/useGetApod';
+import APODModal from './../../components/date-view/APODModal';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
@@ -25,7 +26,7 @@ const DateViewContainer = () => {
   // 날짜를 YY-MM-DD로 표시하기 위한 변수 할당
   
   const dateForApod = `${yy}-${mm}-${dd}`;
-  console.log(dateForApod);
+  // YY-MM-DD
 
   // useGetApod start
   const apodData = useGetApod(dateForApod);
@@ -43,11 +44,15 @@ const DateViewContainer = () => {
         <APOD
           date={apodData.data.date}
           explanation={apodData.data.explanation}
-          media_type={apodData.data.media_type}
           title={apodData.data.title}
           url={apodData.data.url}
         />
       </Box>
+      <APODModal 
+        date={apodData.data.date}
+        explanation={apodData.data.explanation}
+        title={apodData.data.title}
+      />
     </div>
   );
 };
