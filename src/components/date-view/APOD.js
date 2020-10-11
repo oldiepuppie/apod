@@ -5,12 +5,12 @@ const APOD = ({ date, explanation, media_type, title, url }) => {
   return (
     <div>
       <Box height='small' width='small'>
-        <Image fit='cover' src={data.props.url}></Image>
+        <Image fit='cover' src={url}></Image>
       </Box>
-      <Box>{data.props.title}</Box>
-      <Box>{data.props.date}</Box>
-      <Box>{data.props.explanation}</Box>
-      <Box>{data.props.media_type}</Box>
+      <Box>{title}</Box>
+      <Box>{date}</Box>
+      <Box>{explanation}</Box>
+      <Box>{media_type}</Box>
     </div>
   );
 };
