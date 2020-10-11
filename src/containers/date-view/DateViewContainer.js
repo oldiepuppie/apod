@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import APOD from '/components/date-view/APOD.js';
+import { useState, React } from 'react';
+import useGetApod from './../../hooks/useGetApod';
 import { DateInput } from 'grommet';
-import useGetApod from '/hooks/useGetApod';
+import APOD from './../../components/date-view/APOD';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
