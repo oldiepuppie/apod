@@ -1,6 +1,6 @@
 import { Box, DateInput } from 'grommet';
 import React, { useState } from 'react';
-import APOD from './../../components/date-view/APOD';
+import APOD from './APODContainer';
 import useGetApod from './../../hooks/useGetApod';
 import APODModal from './../../components/date-view/APODModal';
 
@@ -14,7 +14,6 @@ const DateViewContainer = () => {
 
   const dateInstance = new Date(isoDate);
 
-
   const yyyy = dateInstance.getFullYear();
   const mm = dateInstance.getMonth() + 1 >= 10
             ? dateInstance.getMonth() + 1
@@ -26,7 +25,6 @@ const DateViewContainer = () => {
   const dateForApod = `${yyyy}-${mm}-${dd}`;
 
   const apodData = useGetApod(dateForApod);
-
   
   return (
     <div>
