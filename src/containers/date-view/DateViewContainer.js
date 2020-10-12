@@ -1,11 +1,11 @@
-import { Box, DateInput } from 'grommet';
+import { Box, DateInput, Image, Layer, Text } from 'grommet';
 import React, { useState } from 'react';
 import useGetApod from './../../hooks/useGetApod';
 import APODContainer from './APODContainer';
 
+
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
-
   const onDateInputChange = (event) => {
     const nextIsoDate = event.value;
     setIsoDate(nextIsoDate);
@@ -16,7 +16,7 @@ const DateViewContainer = () => {
   const yyyy = dateInstance.getFullYear();
   const mm = dateInstance.getMonth() + 1 >= 10
             ? dateInstance.getMonth() + 1
-            : `0${dateInstance.getMonth() + 1}`;
+            : `0${dateInstance.getMonth() + 1}`; // The above error occurred
   const dd = dateInstance.getDate() >= 10
             ? dateInstance.getDate() -1
             : `0${dateInstance.getDate()-1}`;
@@ -25,6 +25,7 @@ const DateViewContainer = () => {
 
   const apodData = useGetApod(dateForApod);
   
+  // The above error occurred
   return (
     <div>
       <Box align='center' pad='large' background='dark-2'>
@@ -32,12 +33,12 @@ const DateViewContainer = () => {
           <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
         </Box>
       </Box>
+
       <APODContainer
-        url={apodData.data.url}
         title={apodData.data.title}
         date={apodData.data.date}
         explanation={apodData.data.explanation}
-        
+        url={apodData.data.url}
       />
     </div>
   );

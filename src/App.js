@@ -15,7 +15,8 @@ function App() {
         </Heading>
       </Header>
 
-      <Box align='center' pad='large' background='dark-2'>
+      {/* // The above error occurred */}
+      <Box align='center' pad='large' background='dark-2'> 
         <DateViewContainer />
       </Box>
 
