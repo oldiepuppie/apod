@@ -1,8 +1,7 @@
 import { Box, DateInput } from 'grommet';
 import React, { useState } from 'react';
-import APOD from './APODContainer';
 import useGetApod from './../../hooks/useGetApod';
-import APODModal from './../../components/date-view/APODModal';
+import APODContainer from './APODContainer';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
@@ -33,14 +32,13 @@ const DateViewContainer = () => {
           <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
         </Box>
       </Box>
-      <Box align='center' pad='large' background='dark-2'>
-        <APODModal
+      <APODContainer
+        url={apodData.data.url}
+        title={apodData.data.title}
         date={apodData.data.date}
         explanation={apodData.data.explanation}
-        title={apodData.data.title}
-        url={apodData.data.url}
-        />
-      </Box>
+        
+      />
     </div>
   );
 };

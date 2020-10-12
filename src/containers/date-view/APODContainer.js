@@ -1,7 +1,7 @@
-import { Box, Image } from 'grommet';
+import { Box, Image, Layer, Text } from 'grommet';
 import React, { useState } from 'react';
 
-const APODContainer = ({ date, explanation, title, url }) => {
+const APODContainer = ({ title, date, explanation, url }) => {
   const [ isAPODModalShow, setIsAPODModalShow ] = useState();
 
   const onAPODModalClose = () => {
@@ -15,7 +15,7 @@ const APODContainer = ({ date, explanation, title, url }) => {
       </Box>
 
       <Box>
-        {show && (
+        {isAPODModalShow && (
           <Layer
             onEsc={() => onAPODModalClose(false)}
             onClickOutside={() => onAPODModalClose(false)}
@@ -30,9 +30,9 @@ const APODContainer = ({ date, explanation, title, url }) => {
             </Box>
           </Layer>
         )}
-        </Box>
+      </Box>
     </div>
   );
 };
 
-export default APOD;
+export default APODContainer;
