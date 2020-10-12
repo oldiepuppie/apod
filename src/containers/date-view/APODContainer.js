@@ -1,21 +1,36 @@
 import { Box, Image } from 'grommet';
 import React, { useState } from 'react';
 
-const APOD = ({ date, explanation, title, url }) => {
+const APODContainer = ({ date, explanation, title, url }) => {
   const [ isAPODModalShow, setIsAPODModalShow ] = useState();
 
-  const onClose = () => {
+  const onAPODModalClose = () => {
     setIsAPODModalShow(false);
   };
 
   return (
     <div>
       <Box align='center' pad='large' background='dark-2'>
-        <Image fit='cover' src={url}></Image>
+        <Image fit='cover' src={url} onClick={onAPODModalClose(true)}></Image>
       </Box>
-      <Box pad='small'>{date}</Box>
-      <Box pad='small'>{title}</Box>
-      <Box pad='small'>{explanation}</Box>
+
+      <Box>
+        {show && (
+          <Layer
+            onEsc={() => onAPODModalClose(false)}
+            onClickOutside={() => onAPODModalClose(false)}
+          >
+            <Box align='center' pad='medium' background='dark-1'>
+              <Box pad='small'>{title}</Box>
+              <Box pad='small'>{date}</Box>
+              <Box pad='small'>{explanation}</Box>
+            </Box>
+            <Box background='dark-1' pad='medium' align='center'>
+              <Text color='status-critical' onClick={() => onAPODModalClose(false)}>X</Text>
+            </Box>
+          </Layer>
+        )}
+        </Box>
     </div>
   );
 };
