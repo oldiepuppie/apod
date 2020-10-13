@@ -1,37 +1,34 @@
 import { Box, Image, Layer, Text } from 'grommet';
 import React, { useState } from 'react';
+import APODModal from './../../components/date-view/APODModal';
 
-const APODContainer = ({ title, date, explanation, url, media_type }) => {
+const APODContainer = ({ title, date, explanation, url, media_type}) => {
   const [ isAPODModalShow, setIsAPODModalShow ] = useState();
-  setIsAPODModalShow(false);
 
-  // Identifier 'onAPODModalClose' has already been declared (4:56)
+  const onAPODModalShow = () => {
+    setIsAPODModalShow(false);
+  };
 
   return (
     <div>
-      {media_type === 'image'
-        ? (
-          <Box align='center' pad='large' background='dark-2'>
-            <Image fit='cover' src={url} onClick={setIsAPODModalShow(true)}></Image>
+      {media_type === 'image' 
+        ? ( <Box align='center' pad='large' background='dark-2'>
+            <Image fit='cover' src={url} onClick={()=> setIsAPODModalShow(true)}></Image>
             {isAPODModalShow && (
-              <Layer
-                onEsc={() => setIsAPODModalShow(false)}
-                onClickOutside={() => setIsAPODModalShow(false)}
-              >
-                <Box align='center' pad='medium' background='dark-1'>
-                  <Box pad='small'>{title}</Box>
-                  <Box pad='small'>{date}</Box>
-                  <Box pad='small'>{explanation}</Box>
-                </Box>
-                  <Text color='status-critical' onClick={() => setIsAPODModalShow(false)}>X</Text>
-              </Layer>
+              <APODModal
+              title={title}
+              date={date}
+              explanation={explanation}
+              onClose={onAPODModalShow}
+              />
             )}
-          </Box>
-          )
+        </Box> )
         : (
-          <iframe title={title} src={url} frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
+            <Box>
+              <iframe title={title} src={url} frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
+            </Box>
           )
-        }
+      }
     </div>
   );
 };

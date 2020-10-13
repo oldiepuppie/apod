@@ -20,7 +20,6 @@ const DateViewContainer = () => {
 
   const apodData = useGetApod(dateForApod);
 
-  // The above error occurred
   return (
     <div>
       <Box align='center' pad='large' background='dark-2'>
@@ -34,6 +33,7 @@ const DateViewContainer = () => {
         date={apodData.data.date}
         explanation={apodData.data.explanation}
         url={apodData.data.url}
+        media_type={apodData.data.media_type}
       />
     </div>
   );

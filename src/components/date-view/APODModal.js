@@ -1,26 +1,22 @@
-import { Box, Layer, Text } from 'grommet';
+import { Box, Layer, Text, Heading, Paragraph } from 'grommet';
 import React from 'react';
 
 const APODModal = ({ title, date, explanation, onClose }) => {
   return (
       <div>
-        <Box>
-          {show && (
-            <Layer
-              onEsc={() => onClose(false)}
-              onClickOutside={() => onClose(false)}
-            >
-              <Box align='center' pad='medium' background='dark-1'>
-                <Box pad='small'>{title}</Box>
-                <Box pad='small'>{date}</Box>
-                <Box pad='small'>{explanation}</Box>
-              </Box>
-              <Box background='dark-1' pad='medium' align='center'>
-                <Text color='status-critical' onClick={() => onClose(false)}>X</Text>
-              </Box>
-            </Layer>
-          )}
-        </Box>
+          <Layer
+            onEsc={onClose}
+            onClickOutside={onClose}
+          >
+            <Box align='center' pad='medium' background='dark-1'>
+              <Heading fill alignSelf='start' margin='xsmall' level='3' size='medium'>{title}</Heading>
+              <Paragraph alignSelf='start' margin='xsmall' size='medium'>{date}</Paragraph>
+              <Paragraph fill margin='xsmall' size='small'>{explanation}</Paragraph>
+            </Box>
+            <Box background='dark-1' pad='medium' align='center'>
+              <Text  onClick={onClose} weight='bold' color='status-critical'>X</Text>
+            </Box>
+          </Layer>
     </div>
   );
 };
