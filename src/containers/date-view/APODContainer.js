@@ -1,4 +1,4 @@
-import { Box, Image, Layer, Text } from 'grommet';
+import { Box, Image } from 'grommet';
 import React, { useState } from 'react';
 import APODModal from './../../components/date-view/APODModal';
 
@@ -13,7 +13,13 @@ const APODContainer = ({ title, date, explanation, url, media_type}) => {
     <div>
       {media_type === 'image' 
         ? ( <Box align='center' pad='large' background='dark-2'>
-            <Image fit='cover' src={url} onClick={()=> setIsAPODModalShow(true)}></Image>
+            <Image 
+              fit='cover'
+              src={url}
+              onClick={()=> setIsAPODModalShow(true)}
+              height='35%'
+              width='35%'
+            ></Image>
             {isAPODModalShow && (
               <APODModal
               title={title}
@@ -22,7 +28,7 @@ const APODContainer = ({ title, date, explanation, url, media_type}) => {
               onClose={onAPODModalShow}
               />
             )}
-        </Box> )
+            </Box> )
         : (
             <Box>
               <iframe title={title} src={url} frameBorder="0" gesture="media" allow="encrypted-media" allowFullScreen></iframe>
