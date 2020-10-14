@@ -9,8 +9,8 @@ const APODModal = ({ title, date, explanation, onClose }) => {
             onClickOutside={onClose}
           >
             <Box align='center' pad='medium' background='dark-1'>
-              <Heading fill alignSelf='start' margin='xsmall' level='3' size='medium'>{title}</Heading>
-              <Paragraph alignSelf='start' margin='xsmall' size='medium'>{date}</Paragraph>
+              <Heading alignSelf='start' margin='xsmall' level='3'>{title}</Heading>
+              <Paragraph alignSelf='start' margin='xsmall'>{date}</Paragraph>
               <Paragraph fill margin='xsmall' size='small'>{explanation}</Paragraph>
             </Box>
             <Box background='dark-1' pad='medium' align='center'>
