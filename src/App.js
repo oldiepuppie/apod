@@ -1,10 +1,12 @@
-import { Anchor, Box, Grommet, Header, Heading } from 'grommet';
+import { Anchor, Box, Grommet, Header, Heading, Main} from 'grommet';
 import { grommet } from 'grommet/themes';
 import React from 'react';
 import DateViewContainer from './containers/date-view/DateViewContainer';
-
+import styled from 'styled-components';
 
 function App() {
+  const MyStyledMain = styled(Main)
+  `height: 100%`;
 
   return (
     <Grommet theme={grommet} full>
@@ -15,10 +17,9 @@ function App() {
         </Heading>
       </Header>
 
-      {/* // The above error occurred */}
-      <Box align='center' pad='large' background='dark-2'> 
+      <MyStyledMain>
         <DateViewContainer />
-      </Box>
+      </MyStyledMain>
 
     </Grommet>
   );
