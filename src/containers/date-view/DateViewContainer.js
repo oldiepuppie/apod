@@ -15,6 +15,15 @@ const DateViewContainer = () => {
   //  ? const apodData = useGetApod(dateForApod); 이거랑 리턴에 어쩌구 저쩌구   
   //  : 
 
+  const validateAvailableDateRange = (isoDate) => {
+    const minDate = new Date(1995, 6, 16);
+    const maxDate = new Date();
+    const targetDate = new Date(isoDate);
+
+    return targetDate.getTime >= minDate.getTime && targetDate.getTime <= maxDate.getTime
+      ? true : false
+  };
+
   const getAPODData = (isoDate) => {
     const dateInstance = new Date(isoDate);
 
@@ -24,6 +33,7 @@ const DateViewContainer = () => {
 
     return `${yyyy}-${mm}-${dd}`;
   };
+
   const apodData = useGetApod(getAPODData)
 
   return (
