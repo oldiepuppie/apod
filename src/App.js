@@ -11,7 +11,7 @@ function App() {
   return (
     <Grommet theme={grommet} full>
       <MyStyledMain>
-        <Header background='dark-1' pad='xsmall' height='xsmall'>
+        <Header background='dark-1' pad='medium' height='xsmall'>
           <Heading level='1' size='small'>
             <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
           </Heading>

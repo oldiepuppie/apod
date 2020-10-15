@@ -1,4 +1,4 @@
-import { Box, Layer, Text, Heading, Paragraph } from 'grommet';
+import { Box, Button, Heading, Layer, Paragraph } from 'grommet';
 import React from 'react';
 
 const APODModal = ({ title, date, explanation, onClose }) => {
