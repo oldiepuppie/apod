@@ -30,7 +30,7 @@ const APODContainer = ({ title, date, explanation, url, media_type}) => {
             )}
             </Box> )
         : (
-            <Box pad='large' size='cover'>
+            <Box align='center' pad='large' size='cover'>
               <iframe title={title} src={url} frameBorder="0" allow="autoplay" width='560px' height='315px' allowFullScreen></iframe>
             </Box>
           )
