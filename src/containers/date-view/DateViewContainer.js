@@ -1,5 +1,5 @@
 import { Box, DateInput } from 'grommet';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useGetApod from './../../hooks/useGetApod';
 import APODContainer from './APODContainer';
 
@@ -15,7 +15,6 @@ const DateViewContainer = () => {
     return ( targetDate.getTime() >= minDate.getTime() && targetDate.getTime() <= maxDate.getTime()
       ? true : false )
   }
-  console.log(validateAvailableDateRange(isoDate));
 
   const getAPODDate = (isoDate) => {
     const dateInstance = new Date(isoDate);
@@ -24,18 +23,20 @@ const DateViewContainer = () => {
     const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
 
     return `${yyyy}-${mm}-${dd}`;
-  };
+  }
 
   const onDateInputChange = (event) => {
     const nextIsoDate = event.value;
     setIsoDate(nextIsoDate);
-    
-    if ( validateAvailableDateRange(isoDate) )
-    { return }
-    else { alert('test') }
   }
 
-  const apodData=useGetApod(getAPODDate(isoDate))
+  useEffect(() => {
+    if ( validateAvailableDateRange(isoDate) )
+    { alert('test one') }
+    else { alert('Date Range : 1995-06-16 ~ Today') }
+  }, [isoDate])
+
+  const apodData = useGetApod(getAPODDate(isoDate))
 
   return (
     <div>
