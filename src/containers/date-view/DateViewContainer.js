@@ -10,20 +10,21 @@ const DateViewContainer = () => {
     setIsoDate(nextIsoDate);
   };
 
-  const dateInstance = new Date(isoDate);
-
-  const yyyy = dateInstance.getFullYear();
-  const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`; // The above error occurred
-  const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
-
   //  const setDateInRange = ( dateInstance ) =>   
-  //  dateInstance>=과거1995-06-16 & dateInstance <= 오늘날짜
+  //  dateInstance>=과거1995-06-16 && dateInstance <= 오늘날짜
   //  ? const apodData = useGetApod(dateForApod); 이거랑 리턴에 어쩌구 저쩌구   
   //  : 
 
-  const dateForApod = `${yyyy}-${mm}-${dd}`;
+  const getAPODData = (isoDate) => {
+    const dateInstance = new Date(isoDate);
 
-  const apodData = useGetApod(dateForApod);
+    const yyyy = dateInstance.getFullYear();
+    const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`; // The above error occurred
+    const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
+
+    return `${yyyy}-${mm}-${dd}`;
+  };
+  const apodData = useGetApod(getAPODData)
 
   return (
     <div>
