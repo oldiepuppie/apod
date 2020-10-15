@@ -16,6 +16,8 @@ const DateViewContainer = () => {
   const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`; // The above error occurred
   const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
 
+  
+
   const dateForApod = `${yyyy}-${mm}-${dd}`;
 
   const apodData = useGetApod(dateForApod);

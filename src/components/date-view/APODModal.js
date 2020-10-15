@@ -14,7 +14,7 @@ const APODModal = ({ title, date, explanation, onClose }) => {
               <Paragraph fill margin='xsmall' size='small'>{explanation}</Paragraph>
             </Box>
             <Box background='dark-1' pad='medium' align='center'>
-              <Button label='close 'onClick={onClose} size='large' weight='bold' color='status-critical'/>
+              <Button label='close 'onClick={onClose} size='large' weight='bold' color='accent-2'/>
             </Box>
           </Layer>
     </div>
