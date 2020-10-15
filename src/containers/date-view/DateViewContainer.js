@@ -5,7 +5,10 @@ import APODContainer from './APODContainer';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
-  
+  const onDateInputChange = (event) => {
+    const nextIsoDate = event.value;
+    setIsoDate(nextIsoDate);
+  }
 
   const validateAvailableDateRange = (isoDate) => {
     const minDate = new Date(1995, 5, 16);
@@ -24,16 +27,10 @@ const DateViewContainer = () => {
 
     return `${yyyy}-${mm}-${dd}`;
   }
-
-  const onDateInputChange = (event) => {
-    const nextIsoDate = event.value;
-    setIsoDate(nextIsoDate);
-  }
-
+  
   useEffect(() => {
-    if ( validateAvailableDateRange(isoDate) )
-    { alert('test one') }
-    else { alert('Date Range : 1995-06-16 ~ Today') }
+    if ( !validateAvailableDateRange(isoDate) )
+    { alert('Date Range : 1995-06-16 ~ Today') }
   }, [isoDate])
 
   const apodData = useGetApod(getAPODDate(isoDate))
