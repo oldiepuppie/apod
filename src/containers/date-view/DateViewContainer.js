@@ -23,7 +23,7 @@ const DateViewContainer = () => {
   return (
     <div>
       <Box align='center' pad='large'  background='dark-2'>
-        <Box width='medium' background='light-1'>
+        <Box width='medium' background='light-1' round='xsmall'>
           <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
         </Box>
       </Box>
