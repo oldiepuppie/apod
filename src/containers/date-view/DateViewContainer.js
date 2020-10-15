@@ -10,11 +10,6 @@ const DateViewContainer = () => {
     setIsoDate(nextIsoDate);
   };
 
-  //  const setDateInRange = ( dateInstance ) =>   
-  //  dateInstance>=과거1995-06-16 && dateInstance <= 오늘날짜
-  //  ? const apodData = useGetApod(dateForApod); 이거랑 리턴에 어쩌구 저쩌구   
-  //  : 
-
   const validateAvailableDateRange = (isoDate) => {
     const minDate = new Date(1995, 6, 16);
     const maxDate = new Date();
