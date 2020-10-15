@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import DateViewContainer from './containers/date-view/DateViewContainer';
 
 const MyStyledMain = styled(Main)`
-    height: calc(100%+96px)
-    background: dark-2
+    height: calc(100%-96px);
+    background-color: #555;
   `;
 
 function App() {
