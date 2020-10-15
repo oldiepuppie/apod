@@ -5,31 +5,37 @@ import APODContainer from './APODContainer';
 
 const DateViewContainer = () => {
   const [isoDate, setIsoDate] = useState(new Date().toISOString());
-  const onDateInputChange = (event) => {
-    const nextIsoDate = event.value;
-    setIsoDate(nextIsoDate);
-  };
+  
 
   const validateAvailableDateRange = (isoDate) => {
-    const minDate = new Date(1995, 6, 16);
+    const minDate = new Date(1995, 5, 16);
     const maxDate = new Date();
     const targetDate = new Date(isoDate);
 
-    return targetDate.getTime >= minDate.getTime && targetDate.getTime <= maxDate.getTime
-      ? true : false
-  };
+    return ( targetDate.getTime() >= minDate.getTime() && targetDate.getTime() <= maxDate.getTime()
+      ? true : false )
+  }
+  console.log(validateAvailableDateRange(isoDate));
 
-  const getAPODData = (isoDate) => {
+  const getAPODDate = (isoDate) => {
     const dateInstance = new Date(isoDate);
-
     const yyyy = dateInstance.getFullYear();
-    const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`; // The above error occurred
+    const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`;
     const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
 
     return `${yyyy}-${mm}-${dd}`;
   };
 
-  const apodData = useGetApod(getAPODData)
+  const onDateInputChange = (event) => {
+    const nextIsoDate = event.value;
+    setIsoDate(nextIsoDate);
+    
+    if ( validateAvailableDateRange(isoDate) )
+    { return }
+    else { alert('test') }
+  }
+
+  const apodData=useGetApod(getAPODDate(isoDate))
 
   return (
     <div>
