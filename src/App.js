@@ -6,21 +6,18 @@ import styled from 'styled-components';
 
 function App() {
   const MyStyledMain = styled(Main)
-  `height: 100%`;
+  `height: calc(100%+96px)`;
 
   return (
     <Grommet theme={grommet} full>
-
-      <Header background='dark-1' pad='xsmall' height='xsmall'>
-        <Heading level='1' size='small'>
-          <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
-        </Heading>
-      </Header>
-
       <MyStyledMain>
+        <Header background='dark-1' pad='xsmall' height='xsmall'>
+          <Heading level='1' size='small'>
+            <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
+          </Heading>
+        </Header>
         <DateViewContainer />
       </MyStyledMain>
-
     </Grommet>
   );
 }
