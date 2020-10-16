@@ -1,7 +1,7 @@
 import { Box, DateInput } from 'grommet';
-import React, { useState, useEffect } from 'react';
-import useGetApod from './../../hooks/useGetApod';
+import React, { useState } from 'react';
 import ReactLoading from 'react-loading';
+import useGetApod from './../../hooks/useGetApod';
 import APODContainer from './APODContainer';
 
 const DateViewContainer = () => {
