@@ -1,6 +1,7 @@
 import { Box, DateInput } from 'grommet';
 import React, { useState, useEffect } from 'react';
 import useGetApod from './../../hooks/useGetApod';
+import ReactLoading from 'react-loading';
 import APODContainer from './APODContainer';
 
 const DateViewContainer = () => {
@@ -34,6 +35,12 @@ const DateViewContainer = () => {
   }, [isoDate])
 
   const apodData = useGetApod(getAPODDate(isoDate))
+
+  // apodData = {isGetApodLoading=true, isGetApodLoaded=false, data}
+  // const loading = () =>
+  //    isGetApodLoading
+  //    ? 로딩 컴포넌트 짠
+  //    : 이미지 로드 // 비워도 되지 않을까?
 
   return (
     <div>
