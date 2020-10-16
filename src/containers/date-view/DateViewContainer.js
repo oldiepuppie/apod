@@ -34,17 +34,7 @@ const DateViewContainer = () => {
     { alert('Date Range : 1995-06-16 ~ Today') }
   }, [isoDate])
 
-  const apodData = useGetApod(getAPODDate(isoDate))
-
-  // apodData = {isGetApodLoading=true, isGetApodLoaded=false, data}
-  // const loading = () =>
-  //    isGetApodLoading
-  //    ? 로딩 컴포넌트 짠 <Example type='spin' color='#fff' />
-  //    : 이미지 로드 // 비워도 되지 않을까?
-  // const Example = ({ type, color }) => (
-  //   <ReactLoading type={type} color={color} height={667} width={375} />
-  // );
-  
+  const apodData = useGetApod(getAPODDate(isoDate))  
 
   return (
     <div>
