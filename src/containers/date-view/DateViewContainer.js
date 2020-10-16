@@ -39,24 +39,33 @@ const DateViewContainer = () => {
   // apodData = {isGetApodLoading=true, isGetApodLoaded=false, data}
   // const loading = () =>
   //    isGetApodLoading
-  //    ? 로딩 컴포넌트 짠
+  //    ? 로딩 컴포넌트 짠 <Example type='spin' color='#fff' />
   //    : 이미지 로드 // 비워도 되지 않을까?
+  // const Example = ({ type, color }) => (
+  //   <ReactLoading type={type} color={color} height={667} width={375} />
+  // );
+  
 
   return (
     <div>
-      <Box align='center' pad='large'  background='dark-2'>
+      <Box align='center' pad='large' background='dark-2'>
         <Box width='medium' background='light-1' round='xsmall'>
           <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
         </Box>
       </Box>
 
-      <APODContainer
+      { apodData.isGetApodLoading 
+        ? <Box align='center' pad='large' background='dark-2'>
+            <ReactLoading type='spin' color='#fff' />
+          </Box>
+        : <APODContainer
         title={apodData.data.title}
         date={apodData.data.date}
         explanation={apodData.data.explanation}
         url={apodData.data.url}
-        media_type={apodData.data.media_type}
-      />
+        media_type={apodData.data.media_type} />
+      }
+      
     </div>
   );
 };

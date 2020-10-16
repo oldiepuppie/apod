@@ -1,8 +1,9 @@
-import { Anchor, Grommet, Header, Heading, Main } from 'grommet';
+import { Anchor, Box, Grommet, Header, Heading, Main } from 'grommet';
 import { grommet } from 'grommet/themes';
 import React from 'react';
 import styled from 'styled-components';
 import DateViewContainer from './containers/date-view/DateViewContainer';
+import ReactLoading from 'react-loading';
 
 const MyStyledMain = styled(Main)
   `height: calc( 100% - 96px );
