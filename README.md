@@ -1,13 +1,17 @@
-URL <br>
-http://apod.kr/
+# APOD (Astronomy Picture of the Day)
 
-// 스크린샷
+## Technologies Used
+- React
+- Grommet
+- styled-component
+- NASA API
+  -  APOD (Astronomy Picture of the Day)
 
-// 페이지 소개
-// 한국어로 먼저
-// 영어로 나중에
 
-// 사용 방법
-
-// 사용 기술
-// 링크 추가하기
+## TODO
+- [ ] 기능 추가
+- [ ] 디자인 라이브러리 걷어내기
+  - [ ] SCSS, CSS in JS, Tailwind CSS 사용 고려
+- [ ] 배포
+  - [ ] 도메인 구입
+  - [ ] Vercel 사용 고려
