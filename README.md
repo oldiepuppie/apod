@@ -7,6 +7,9 @@
 - NASA API
   -  APOD (Astronomy Picture of the Day)
 
+## Brief View
+![screenshot](https://github.com/oldiepuppie/apod/blob/master/screenshot.png?raw=true)
+
 
 ## TODO
 - [ ] 기능 추가
