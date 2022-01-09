@@ -1,8 +1,7 @@
-import { Box, Image } from 'grommet';
-import React, { useState } from 'react';
-import APODModal from './../../components/date-view/APODModal';
+import { useState } from 'react';
+import APODModal from '../../components/date-view/APODModal';
 
-const APODContainer = ({ title, date, explanation, url, media_type }) => {
+const MediaContainer = ({ title, date, explanation, url, media_type }) => {
   const [isAPODModalShow, setIsAPODModalShow] = useState();
 
   const closeAPODModal = () => {
@@ -10,17 +9,18 @@ const APODContainer = ({ title, date, explanation, url, media_type }) => {
   };
 
   return (
-    <div>
+    <figure className='MediaContainer'>
       {media_type === 'image' ? (
-        <Box align='center' pad='large' background='dark-2'>
-          <Image fit='cover' src={url} onClick={() => setIsAPODModalShow(true)} height='35%' width='35%' />
+        <div className='apodImgContainer'>
+          <img src={url} onClick={() => setIsAPODModalShow(true)} alt='astronomy' />
           {isAPODModalShow && (
             <APODModal title={title} date={date} explanation={explanation} onClose={closeAPODModal} />
           )}
-        </Box>
+        </div>
       ) : (
-        <Box align='center' pad='large' size='cover'>
+        <div className='apodVideoContainer'>
           <iframe
+            className='apodVideo'
             title={title}
             src={url}
             frameBorder='0'
@@ -29,10 +29,10 @@ const APODContainer = ({ title, date, explanation, url, media_type }) => {
             height='315px'
             allowFullScreen
           />
-        </Box>
+        </div>
       )}
-    </div>
+    </figure>
   );
 };
 
-export default APODContainer;
+export default MediaContainer;

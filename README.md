@@ -1,23 +1,22 @@
 # APOD (Astronomy Picture of the Day)
 
-## Technologies Used
+## Used
 - React
-- Grommet
-- styled-component
+- TailwindCSS
 - NASA API
-  -  APOD (Astronomy Picture of the Day)
-
-## Brief View
-![screenshot](https://github.com/oldiepuppie/apod/blob/master/screenshot.png?raw=true)
-
+  - APOD (Astronomy Picture of the Day)
 
 ## TODO
-- [ ] 기능 추가 및 개선
-  - [ ] 시차를 고려해서 데이터 불러오기
+### UI
+  - [ ] 디자인 라이브러리 대체 - Tailwind CSS로 스타일 작성
+  - [ ] 반응형
+  - +a
+    - [ ] 다크모드/라이트모드
+### Functions
+  - [ ] 무한스크롤
   - [ ] 상태 저장
-- [ ] 디자인 라이브러리 걷어내기
-  - [ ] SCSS, CSS in JS, Tailwind CSS 사용 고려
-  - [ ] 달력은 라이브러리 사용
-- [ ] 배포
-  - [ ] 도메인 구입
-  - [ ] Vercel 사용 고려
+  - [ ] 시차를 고려해서 데이터 불러오기
+### Deploy
+  - [x] Vercel
+  - [ ] 도메인 구입 및 적용
+

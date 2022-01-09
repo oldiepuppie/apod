@@ -1,55 +1,27 @@
-import { Box, DateInput } from 'grommet';
-import React, { useState } from 'react';
-import ReactLoading from 'react-loading';
+import { useState } from 'react';
 import useGetApod from './../../hooks/useGetApod';
-import APODContainer from './APODContainer';
+import DateInput from '../../components/DateInput';
+import MediaContainer from './MediaContainer';
 
 const DateViewContainer = () => {
-  const [isoDate, setIsoDate] = useState(new Date().toISOString());
+  const [dateInput, setDateInput] = useState('');
 
-  const validateAvailableDateRange = (isoDate) => {
-    const minDate = new Date(1995, 5, 16);
-    const maxDate = new Date();
-    const targetDate = new Date(isoDate);
-
-    return targetDate.getTime() >= minDate.getTime() && targetDate.getTime() <= maxDate.getTime();
+  const onClickHandler = (date) => {
+    setDateInput(date);
   };
 
-  const getAPODDate = (isoDate) => {
-    const dateInstance = new Date(isoDate);
-    const yyyy = dateInstance.getFullYear();
-    const mm = dateInstance.getMonth() + 1 >= 10 ? dateInstance.getMonth() + 1 : `0${dateInstance.getMonth() + 1}`;
-    const dd = dateInstance.getDate() >= 10 ? dateInstance.getDate() - 1 : `0${dateInstance.getDate() - 1}`;
-
-    return `${yyyy}-${mm}-${dd}`;
-  };
-
-  const onDateInputChange = (event) => {
-    const nextIsoDate = event.value;
-
-    if (validateAvailableDateRange(nextIsoDate)) {
-      setIsoDate(nextIsoDate);
-    } else {
-      alert('Date Range : 1995-06-16 ~ Today');
-    }
-  };
-
-  const apodData = useGetApod(getAPODDate(isoDate));
+  const apodData = useGetApod(dateInput);
 
   return (
-    <div>
-      <Box align='center' pad='large' background='dark-2'>
-        <Box width='medium' background='light-1' round='xsmall'>
-          <DateInput format='mm/dd/yyyy' value={isoDate} onChange={onDateInputChange} />
-        </Box>
-      </Box>
-
+    <main className='DateViewContainer'>
+      <DateInput onClickHandler={onClickHandler} />
       {apodData.isGetApodLoading ? (
-        <Box align='center' pad='large' background='dark-2'>
-          <ReactLoading type='spin' color='#fff' />
-        </Box>
+        <section className='loadingSpinnerContainer'>
+          {/* FIXME 라이브러리 삭제, SVG spinner 컴포넌트 추가 */}
+          <div>로딩중</div>
+        </section>
       ) : (
-        <APODContainer
+        <MediaContainer
           title={apodData.data.title}
           date={apodData.data.date}
           explanation={apodData.data.explanation}
@@ -57,7 +29,7 @@ const DateViewContainer = () => {
           media_type={apodData.data.media_type}
         />
       )}
-    </div>
+    </main>
   );
 };
 

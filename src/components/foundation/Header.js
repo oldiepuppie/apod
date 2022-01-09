@@ -1,14 +1,7 @@
-import { Anchor, Header as GrommetHeader, Heading } from 'grommet';
 import React from 'react';
 
-const Header = () => {
-  return (
-    <GrommetHeader background='dark-2' height='xsmall'>
-      <Heading level='2' size='small'>
-        <Anchor color='accent-3' href='#' label='Astronomy Picture of Day' />
-      </Heading>
-    </GrommetHeader>
-  );
+const Header = ({ children }) => {
+  return <h1 className='headerText p-8 text-4xl bg-slate-800 text-slate-200 font-bold vp12:text-5xl'>{children}</h1>;
 };
 
 export default Header;
