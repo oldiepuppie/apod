@@ -15,7 +15,11 @@ const DateViewContainer = () => {
   return (
     <main className='DateViewContainer'>
       <DateInput onClickHandler={onClickHandler} />
-      {apodData.isGetApodLoading ? (
+      {dateInput.length === 0 ? (
+        <div>
+          Please choose date and press <strong>Submit</strong> button.
+        </div>
+      ) : apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>
           {/* FIXME 라이브러리 삭제, SVG spinner 컴포넌트 추가 */}
           <div>로딩중</div>
