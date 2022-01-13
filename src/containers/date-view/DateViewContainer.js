@@ -2,11 +2,12 @@ import { useState } from 'react';
 import useGetApod from './../../hooks/useGetApod';
 import DateInput from '../../components/DateInput';
 import MediaContainer from './MediaContainer';
-// FIXME getDateTodayEST() : 전역 상태로 다루기
-import getDateTodayEST from '../../utilities/getDateTodayEST';
+import { useRecoilValue } from 'recoil';
+import { dateTodayESTState } from '../../recoil/atoms';
 
 const DateViewContainer = () => {
-  const [dateInput, setDateInput] = useState(getDateTodayEST());
+  const todayDateString = useRecoilValue(dateTodayESTState);
+  const [dateInput, setDateInput] = useState(todayDateString);
 
   const onClickHandler = (date) => {
     setDateInput(date);
