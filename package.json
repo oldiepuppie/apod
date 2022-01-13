@@ -12,6 +12,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "^5.0.0",
+    "recoil": "^0.5.2",
     "tailwindcss": "^3.0.12"
   },
   "scripts": {
@@ -21,7 +22,19 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "parser": "babel-eslint",
+    "plugins": [
+      "react-hooks"
+    ],
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": [
+        "warn",
+        {
+          "additionalHooks": "useRecoilCallback"
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -36,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "eslint": "^8.6.0",
     "prettier": "2.1.2",
     "webpack": "^5.65.0"
   }
