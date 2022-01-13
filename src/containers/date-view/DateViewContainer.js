@@ -2,9 +2,11 @@ import { useState } from 'react';
 import useGetApod from './../../hooks/useGetApod';
 import DateInput from '../../components/DateInput';
 import MediaContainer from './MediaContainer';
+// FIXME getDateTodayEST() : 전역 상태로 다루기
+import getDateTodayEST from '../../utilities/getDateTodayEST';
 
 const DateViewContainer = () => {
-  const [dateInput, setDateInput] = useState('');
+  const [dateInput, setDateInput] = useState(getDateTodayEST());
 
   const onClickHandler = (date) => {
     setDateInput(date);
@@ -16,13 +18,13 @@ const DateViewContainer = () => {
     <main className='DateViewContainer'>
       <DateInput onClickHandler={onClickHandler} />
       {dateInput.length === 0 ? (
-        <div>
+        <p className='noInputWarning'>
           Please choose date and press <strong>Submit</strong> button.
-        </div>
+        </p>
       ) : apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>
           {/* FIXME 라이브러리 삭제, SVG spinner 컴포넌트 추가 */}
-          <div>로딩중</div>
+          <div>Loading...</div>
         </section>
       ) : (
         <MediaContainer
