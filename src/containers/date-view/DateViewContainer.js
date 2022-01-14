@@ -27,7 +27,7 @@ const DateViewContainer = () => {
         </p>
       ) : apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>
-          {/* FIXME 라이브러리 삭제, SVG spinner 컴포넌트 추가 */}
+          {/* FIXME 로딩 중 skeleton 또는 spinner 추가 */}
           <div>Loading...</div>
         </section>
       ) : (

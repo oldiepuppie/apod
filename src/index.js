@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <RecoilRoot>
-    <App />
-  </RecoilRoot>,
+  <BrowserRouter>
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
