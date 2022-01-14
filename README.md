@@ -9,9 +9,11 @@
 ## TODO
 ### UI
   - [ ] 디자인 라이브러리 대체 - Tailwind CSS로 스타일 작성
+    - [x] Settings
+    - [ ] UI
   - [ ] 반응형
 ### Functions
-  - [ ] 상태 저장
+  - [ ] 상태 관리
   - [x] 시차를 고려해서 데이터 불러오기
 ### Deploy
   - [x] Vercel
