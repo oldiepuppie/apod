@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useSetPageState from '../../hooks/useSetPageNameState';
-import useGetApod from './../../hooks/useGetApod';
-import DateInput from '../../components/DateInput';
+import useGetApod from '../../hooks/useGetApod';
+import DateInput from './DateInput';
 import MediaContainer from './MediaContainer';
 import { useRecoilValue } from 'recoil';
 import { dateTodayESTState } from '../../recoil/atoms';
