@@ -14,10 +14,23 @@ const DateInput = ({ onClickHandler }) => {
     onClickHandler(dateInput);
   };
 
+  const inputKeyPressHandler = (e) => {
+    if (e.key === 'Enter') {
+      buttonHandler();
+    }
+  };
+
   return (
     <section className='DateInput' width='medium' background='light-1' round='xsmall'>
       <div className='dateInputContainer'>
-        <input type='date' onChange={inputHandler} value={dateInput} min='1995-05-16' max={todayDateString} />
+        <input
+          type='date'
+          value={dateInput}
+          min='1995-06-16'
+          max={todayDateString}
+          onChange={inputHandler}
+          onKeyPress={inputKeyPressHandler}
+        />
         <button type='submit' onClick={buttonHandler}>
           Submit
         </button>

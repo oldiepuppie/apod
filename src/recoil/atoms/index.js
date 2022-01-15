@@ -8,8 +8,8 @@ export const dateTodayESTState = atom({
   default: dateTodayEST,
 });
 
-export const pageState = atom({
-  key: 'pageState',
+export const sectionNameState = atom({
+  key: 'sectionNameState',
   default: 'dateView',
 });
 

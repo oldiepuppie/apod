@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import useSetPageState from '../../hooks/useSetPageNameState';
+import { useState, useEffect } from 'react';
+import useSetSectionNameState from '../../hooks/useSetSectionNameState';
 import useGetApod from '../../hooks/useGetApod';
 import DateInput from './DateInput';
 import MediaContainer from './MediaContainer';
@@ -7,16 +7,27 @@ import { useRecoilValue } from 'recoil';
 import { dateTodayESTState } from '../../recoil/atoms';
 
 const DateViewContainer = () => {
-  useSetPageState('dateView');
+  const { sessionStorage } = window;
+  useSetSectionNameState('dateView');
 
   const todayDateString = useRecoilValue(dateTodayESTState);
   const [dateInput, setDateInput] = useState(todayDateString);
+  const [isError, setIsError] = useState(false);
 
   const onClickHandler = (date) => {
     setDateInput(date);
   };
 
   const apodData = useGetApod(dateInput);
+
+  // TODO 마지막으로 입력한 날짜를 세션에 저장, 로드
+  useEffect(() => {
+    const saveDate = (date) => {
+      setIsError(false);
+      sessionStorage.setItem('lastDateInput', date);
+    };
+    apodData.data.code === 400 ? setIsError(true) : saveDate(dateInput);
+  }, [apodData]);
 
   return (
     <main className='DateViewContainer'>
@@ -30,6 +41,8 @@ const DateViewContainer = () => {
           {/* FIXME 로딩 중 skeleton 또는 spinner 추가 */}
           <div>Loading...</div>
         </section>
+      ) : isError ? (
+        <div>invalid request - check the date</div>
       ) : (
         <MediaContainer
           title={apodData.data.title}

@@ -7,7 +7,9 @@ const APODModal = ({ title, date, explanation, onClose }) => {
         <p className='modalDescription'>{explanation}</p>
       </div>
       <div className='modalCloseButtonContainer'>
-        <button className='modalCloseButton' onClick={onClose}></button>
+        <button className='modalCloseButton font-bold' onClick={onClose}>
+          close modal
+        </button>
       </div>
     </article>
   );
