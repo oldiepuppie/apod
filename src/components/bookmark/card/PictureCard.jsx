@@ -5,12 +5,12 @@
 */
 
 const PictureCard = ({ src, title, date, explanation, mediaType }) => {
-  const mediaType = { mediaType }; // TODO control rendering media
-  const explanation = { explanation }; // TODO for a modal
+  const dataType = { mediaType }; // TODO control rendering media
+  const description = { explanation }; // TODO for a modal
 
   return (
-    <div className='PictureCard'>
-      <img className='astronomyPicture w-1/12' src={src} alt='astronomy' />
+    <div className='PictureCard bg-gray-300 w-2/5 m-4'>
+      <img className='astronomyPicture w-max' src={src} alt='astronomy' />
       <h3 className='mediaTitle'>{title}</h3>
       <p className='publishedAt'>{date}</p>
     </div>
