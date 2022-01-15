@@ -1,12 +1,9 @@
-// TODO Picture 카드에 더미데이터 렌더링 테스트
-// import { PictureCard } from '../components/bookmark';
-
-const BookmarkPage = () => {
+const BookmarkSection = () => {
   return (
-    <div>
-      <h2>북마크 페이지</h2>
-    </div>
+    <main className='BookmarkSection'>
+      <h2>북마크 섹션</h2>
+    </main>
   );
 };
 
-export default BookmarkPage;
+export default BookmarkSection;

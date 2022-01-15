@@ -1,2 +1,2 @@
-export { default as DateView } from './DateView';
-export { default as BookmarkPage } from './BookmarkSection';
+export { default as DateViewContainer } from './DateViewContainer';
+export { default as BookmarkSection } from './BookmarkSection';

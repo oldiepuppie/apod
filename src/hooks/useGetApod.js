@@ -6,7 +6,7 @@ const useGetApod = (date) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    if (!date) return;
+    if (!date || date.length === 0) return;
 
     const getApod = async () => {
       setIsGetApodLoading(true);
@@ -14,11 +14,17 @@ const useGetApod = (date) => {
       const response = await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_NASA_API_KEY}&date=${date}`
       );
-      const data = await response.json();
 
-      setIsGetApodLoading(false);
-      setIsGetApodLoaded(true);
-      setData(data);
+      if (response.status === 404) {
+        setIsGetApodLoading(false);
+        setIsGetApodLoaded(true);
+        setData({ code: 404 });
+      } else {
+        const data = await response.json();
+        setIsGetApodLoading(false);
+        setIsGetApodLoaded(true);
+        setData(data);
+      }
     };
 
     getApod();

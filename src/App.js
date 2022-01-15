@@ -3,13 +3,14 @@ import { Route } from 'react-router-dom';
 import { DateView, BookmarkSection } from './sections';
 */
 import Header from './components/foundation/Header';
-import DateViewContainer from './containers/date-view/DateViewContainer';
+import { DateViewContainer, BookmarkSection } from './sections';
 
 function App() {
   return (
     <div className='App'>
       <Header>Astronomy Picture Of Day</Header>
       <DateViewContainer />
+      <BookmarkSection />
     </div>
   );
 }
