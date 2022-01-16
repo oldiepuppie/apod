@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
+import getDateTodayEST from '../utilities/getDateTodayEST';
 import useGetApod from '../hooks/useGetApod';
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { dateTodayESTState, bookmarkListState } from '../recoil/atoms';
+import { useRecoilState } from 'recoil';
+import { bookmarkListState } from '../recoil/atoms';
 import DateInput from '../containers/date-view/DateInput';
 import MediaContainer from '../containers/date-view/MediaContainer';
+
+/* FIXME
+  - [ ] 에러 처리
+    - [ ] 에러일때 내용 표시하는 컴포넌트 따로 빼는게 좋아보임. props로 에러 코드 받기.
+  - [ ] apodData, data, date 등 depth가 조금 깊고, 이름이 혼동됨. 이해하기 쉽도록 변경 가능해보임
+  - [ ] loading, loaded 구분
+*/
 
 const DateViewContainer = () => {
   useSetSectionNameState('dateView');
 
-  const todayDateString = useRecoilValue(dateTodayESTState);
+  const todayDateString = getDateTodayEST();
   const [dateInput, setDateInput] = useState(todayDateString);
   const [error, setError] = useState({ isError: false, code: null });
 
@@ -18,7 +26,8 @@ const DateViewContainer = () => {
   };
 
   const apodData = useGetApod(dateInput);
-  const { code } = apodData.data;
+  const { data } = apodData;
+  const { code, date } = data;
 
   useEffect(() => {
     code === 400
@@ -30,31 +39,29 @@ const DateViewContainer = () => {
 
   // FIXME 여러번 사용할 가능성이 있는 로직이므로 파일로 분리할 방법 생각해보기
   const [list, setList] = useRecoilState(bookmarkListState);
-  const { data } = apodData;
-  const { date } = data;
 
   const addToBookmart = () => {
-    setList([data, ...list]);
+    setList((prevList) => [data, ...prevList]);
   };
 
-  const removeFromBookmark = () => {
+  const removeFromBookmark = (date) => {
     setList(list.filter((item) => item.date !== date));
   };
 
-  const bookmarkButtonHandler = (e) => {
-    const dateCheck = list.filter((item) => item.date === date);
+  const bookmarkButtonHandler = () => {
+    const isBookmarkedItem = list.some((item) => item.date === date);
 
-    dateCheck.length === 0 ? setList([data, ...list]) : setList(list.filter((item) => item.date !== date));
+    if (isBookmarkedItem) {
+      setList(list.filter((item) => item.date !== date));
+    } else {
+      setList([data, ...list]);
+    }
   };
 
   return (
     <main className='DateViewContainer'>
       <DateInput onClickHandler={onClickHandler} />
-      {dateInput.length === 0 ? (
-        <p className='noInputWarning'>
-          Please choose date and press <strong>Submit</strong> button.
-        </p>
-      ) : apodData.isGetApodLoading ? (
+      {apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>
           {/* FIXME 로딩 중 skeleton 또는 spinner 추가 */}
           <div>Loading...</div>
@@ -93,7 +100,3 @@ const DateViewContainer = () => {
 };
 
 export default DateViewContainer;
-
-// (
-
-// )

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
 import PictureCard from '../components/bookmark/card/PictureCard';
+
 const BookmarkSection = () => {
   const list = useRecoilValue(bookmarkListState);
   useEffect(() => {

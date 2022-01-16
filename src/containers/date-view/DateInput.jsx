@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { dateTodayESTState } from '../../recoil/atoms/index';
+import getDateTodayEST from '../../utilities/getDateTodayEST';
 
 const DateInput = ({ onClickHandler }) => {
-  const todayDateString = useRecoilValue(dateTodayESTState);
+  const todayDateString = getDateTodayEST();
   const [dateInput, setDateInput] = useState(todayDateString);
 
   const inputHandler = (e) => {

@@ -10,9 +10,9 @@ const PictureCard = ({ src, title, date, explanation, mediaType }) => {
 
   return (
     <div className='PictureCard bg-gray-300 w-2/5 m-4'>
-      <img className='astronomyPicture w-max' src={src} alt='astronomy' />
-      <h3 className='mediaTitle'>{title}</h3>
-      <p className='publishedAt'>{date}</p>
+      <img className='w-max' src={src} alt='astronomy' />
+      <h3>{title}</h3>
+      <p>{date}</p>
     </div>
   );
 };
