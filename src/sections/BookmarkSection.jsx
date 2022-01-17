@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
 import sectionNames from '../recoil/sectionNames';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
-import PictureCard from '../components/bookmark/card/PictureCard';
+import PictureCard from '../components/bookmarkSection/PictureCard';
 import db from '../db';
 
 const BookmarkSection = () => {

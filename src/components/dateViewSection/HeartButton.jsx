@@ -1,4 +1,4 @@
-import { ReactComponent as HeartIcon } from './heart.svg';
+import { ReactComponent as HeartIcon } from '../../svg/heart.svg';
 
 const HeartButton = ({ bookmarkButtonHandler, size, color }) => {
   return (

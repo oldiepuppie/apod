@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import HeartButton from '../../components/common/HeartButton/HeartButton';
-import APODModal from '../../components/date-view/modal/APODModal';
+import HeartButton from '../../components/dateViewSection/HeartButton';
+import APODModal from '../../components/common/APODModal';
 
 const MediaContainer = ({ title, date, explanation, url, media_type, bookmarkButtonHandler }) => {
   const [isAPODModalShow, setIsAPODModalShow] = useState();

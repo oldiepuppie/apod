@@ -8,7 +8,7 @@ import { bookmarkListState } from '../recoil/atoms';
 import db from '../db';
 import DateInput from '../containers/date-view/DateInput';
 import MediaContainer from '../containers/date-view/MediaContainer';
-import ErrorMessage from '../components/date-view/ErrorMessage';
+import ErrorMessage from '../components/dateViewSection/ErrorMessage';
 
 const DateViewContainer = () => {
   const { DateView } = sectionNames;
@@ -46,7 +46,8 @@ const DateViewContainer = () => {
     }
   };
 
-  const bookmarkButtonHandler = () => {
+  const bookmarkButtonHandler = (e) => {
+    e.stopPropagation();
     const isBookmarkedItem = list.some((item) => item.date === date);
 
     if (!isBookmarkedItem) {
