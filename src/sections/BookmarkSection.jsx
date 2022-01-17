@@ -1,8 +1,23 @@
+import { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
+import sectionNames from '../recoil/sectionNames';
+import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import PictureCard from '../components/bookmark/card/PictureCard';
+import db from '../db';
 
 const BookmarkSection = () => {
+  const { Bookmark } = sectionNames;
+  useSetSectionNameState(Bookmark);
+
+  useEffect(async () => {
+    const loadItems = async () => {
+      return await db.bookmarkedItems.toArray();
+    };
+
+    await loadItems();
+  }, []);
+
   const list = useRecoilValue(bookmarkListState);
 
   return (

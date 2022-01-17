@@ -2,8 +2,6 @@ import { useState } from 'react';
 import HeartButton from '../../components/common/HeartButton/HeartButton';
 import APODModal from '../../components/date-view/modal/APODModal';
 
-// TODO 마지막으로 입력한 날짜를 세션에 저장, 로드
-
 const MediaContainer = ({ title, date, explanation, url, media_type, bookmarkButtonHandler }) => {
   const [isAPODModalShow, setIsAPODModalShow] = useState();
 

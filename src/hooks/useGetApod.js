@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 
 /* FIXME
-  - [ ] loading, loaded 구분
-    - loading의 반대가 loaded인 것이 아님
   - [ ] apodData, data, date 등 depth가 조금 깊고, 이름이 혼동됨. 이해하기 쉽도록 변경 가능해보임
-  - [ ] 에러 처리
-    - [ ] 데이터와 에러 분리하기
 */
 
 const useGetApod = (date) => {

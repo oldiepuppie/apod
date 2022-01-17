@@ -1,6 +1,5 @@
 /* FIXME
   - [ ] 모달 구현 및 적용
-  - [ ] 더미데이터로 sections/BookmarkSections에 테스트
   - [ ] 비디오 렌더링 - google api
 */
 

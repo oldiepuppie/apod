@@ -1,4 +1,6 @@
-export const sectionNames = Object.freeze({
+const sectionNames = Object.freeze({
   DateView: 'dateView',
   Bookmark: 'bookmark',
 });
+
+export default sectionNames;
