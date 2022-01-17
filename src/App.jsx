@@ -1,6 +1,3 @@
-/* TODO - Page 컴포넌트 작성, 렌더링
-import { Route } from 'react-router-dom';
-*/
 import { BrowserRouter } from 'react-router-dom';
 import Header from './components/foundation/Header';
 import { DateViewContainer, BookmarkSection } from './sections';
