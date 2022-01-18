@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilValue, useRecoilState } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
 import sectionNames from '../recoil/sectionNames';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
@@ -10,15 +10,25 @@ const BookmarkSection = () => {
   const { Bookmark } = sectionNames;
   useSetSectionNameState(Bookmark);
 
-  useEffect(async () => {
-    const loadItems = async () => {
-      return await db.bookmarkedItems.toArray();
-    };
+  const [list, setList] = useRecoilState(bookmarkListState);
 
-    await loadItems();
-  }, []);
+  const removeFromBookmark = async (date) => {
+    try {
+      await db.bookmarkedItems.delete(date);
+      setList(list.filter((item) => item.date !== date));
+    } catch (error) {
+      alert(error);
+    }
+  };
 
-  const list = useRecoilValue(bookmarkListState);
+  const bookmakrDeleteButtonHandler = (e) => {
+    const targetDate = e.target.parentNode.id;
+
+    const isBookmarkedItem = list.some((item) => item.date === targetDate);
+    if (isBookmarkedItem) {
+      removeFromBookmark(targetDate);
+    }
+  };
 
   return (
     <main className='BookmarkSection'>
@@ -28,7 +38,14 @@ const BookmarkSection = () => {
           const { url, title, date, explanation, mediaType } = item;
           return (
             <li className='bookmarkedItem' key={date}>
-              <PictureCard src={url} title={title} date={date} explanation={explanation} mediaType={mediaType} />
+              <PictureCard
+                src={url}
+                title={title}
+                date={date}
+                explanation={explanation}
+                mediaType={mediaType}
+                bookmakrDeleteButtonHandler={bookmakrDeleteButtonHandler}
+              />
             </li>
           );
         })}
