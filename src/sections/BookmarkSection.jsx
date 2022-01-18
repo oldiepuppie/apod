@@ -32,7 +32,7 @@ const BookmarkSection = () => {
 
   return (
     <main className='BookmarkSection'>
-      <h2 className='font-black text-2xl bg-yellow-100'>북마크 섹션</h2>
+      <h2 className='font-black text-2xl border-2'>Bookmarks Section</h2>
       <ul className='bookmarkList inline-grid grid-cols-2 gap-4'>
         {list.map((item) => {
           const { url, title, date, explanation, mediaType } = item;

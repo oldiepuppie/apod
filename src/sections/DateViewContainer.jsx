@@ -27,7 +27,6 @@ const DateViewContainer = () => {
 
   const [list, setList] = useRecoilState(bookmarkListState);
 
-  // TODO indexedDB 작업중
   const addToBookmark = async (item) => {
     try {
       await db.bookmarkedItems.add(item);
@@ -59,6 +58,7 @@ const DateViewContainer = () => {
 
   return (
     <main className='DateViewContainer'>
+      <h2 className='font-black text-2xl border-2'>Date View Section</h2>
       <DateInput onClickHandler={onClickHandler} />
       {apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>

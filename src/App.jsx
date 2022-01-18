@@ -1,18 +1,24 @@
 import { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/foundation/Header';
-import { DateViewContainer, BookmarkSection } from './sections';
+import Navigation from './components/foundation/Navigation';
+import { DateViewContainer, BookmarkSection, NoMatchRouteWarning } from './sections';
 
 function App() {
   return (
     <BrowserRouter>
-      <div className='App'>
-        <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
+        <div className='App'>
           <Header>Astronomy Picture Of Day</Header>
-          <DateViewContainer />
-          <BookmarkSection />
-        </Suspense>
-      </div>
+          <Navigation />
+          <Routes>
+            <Route exact path='/' element={<Navigate to='/dateview' />}></Route>
+            <Route path='/dateview' element={<DateViewContainer />}></Route>
+            <Route path='/bookmarks' element={<BookmarkSection />}></Route>
+            <Route path='*' element={<NoMatchRouteWarning />}></Route>
+          </Routes>
+        </div>
+      </Suspense>
     </BrowserRouter>
   );
 }
