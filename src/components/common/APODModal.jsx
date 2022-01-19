@@ -4,7 +4,7 @@ const APODModal = ({ withMedia, media_type, url, title, date, explanation, onClo
   return (
     <article className='APODModal border border-red-500'>
       <div>
-        {withMedia ? <APODMedia media_type={media_type} url={url} title={title} /> : null}
+        {media_type ? <APODMedia media_type={media_type} url={url} title={title} /> : null}
         <div className='modalContents'>
           <h3 className='modalTitle'>{title}</h3>
           <h4 className='modalDate'>{date}</h4>

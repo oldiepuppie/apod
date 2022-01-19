@@ -8,15 +8,16 @@ function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className='App'>
-          <Header>Astronomy Picture Of Day</Header>
-          <Navigation />
+        <div className='App w-screen min-h-screen p-10 bg-bgGray'>
+          <Header>Astronomy Picture Of the Day</Header>
+          {/* <Navigation /> */}
           <Routes>
             <Route exact path='/' element={<Navigate to='/dateview' />}></Route>
             <Route path='/dateview' element={<DateViewContainer />}></Route>
             <Route path='/bookmarks' element={<BookmarkSection />}></Route>
             <Route path='*' element={<NoMatchRouteWarning />}></Route>
           </Routes>
+          <Navigation />
         </div>
       </Suspense>
     </BrowserRouter>

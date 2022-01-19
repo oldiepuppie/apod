@@ -58,7 +58,7 @@ const DateViewContainer = () => {
 
   return (
     <main className='DateViewContainer'>
-      <h2 className='font-black text-2xl border border-black'>Date View Section</h2>
+      <h2 className='mb-3 font-extrabold text-2xl text-darkGray border-b border-lightGray'>Date View</h2>
       <DateInput onClickHandler={onClickHandler} />
       {apodData.isGetApodLoading ? (
         <section className='loadingSpinnerContainer'>
@@ -70,6 +70,7 @@ const DateViewContainer = () => {
         <MediaContainer
           id={apodData.data.date}
           title={apodData.data.title}
+          copyright={apodData.data.copyright}
           date={apodData.data.date}
           explanation={apodData.data.explanation}
           url={apodData.data.url}

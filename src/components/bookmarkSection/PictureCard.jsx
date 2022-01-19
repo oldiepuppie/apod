@@ -23,7 +23,6 @@ const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDelete
       </div>
       {isAPODModalShow ? (
         <APODModal
-          withMedia
           media_type={media_type}
           url={url}
           title={title}

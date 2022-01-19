@@ -20,9 +20,10 @@ const DateInput = ({ onClickHandler }) => {
   };
 
   return (
-    <section className='DateInput' width='medium' background='light-1' round='xsmall'>
-      <div className='dateInputContainer'>
+    <section className='DateInput flex-col mt-5 mb-14 justify-center items-center text-darkGray'>
+      <div className='dateInputContainer flex mb-2 justify-center'>
         <input
+          className='p-2 font-medium text-lg border border-lightGray rounded text-black'
           type='date'
           value={dateInput}
           min='1995-06-16'
@@ -30,14 +31,14 @@ const DateInput = ({ onClickHandler }) => {
           onChange={inputHandler}
           onKeyPress={inputKeyPressHandler}
         />
-        <button type='submit' onClick={buttonHandler}>
+        <button className='ml-4 px-2 font-bold border-2 rounded-xl' type='submit' onClick={buttonHandler}>
           Submit
         </button>
       </div>
-      <p className='dateRangeGuide'>
-        The date range follows{' '}
+      <p className='flex justify-center'>
+        <span>The date range follows </span>
         <a href='https://en.wikipedia.org/wiki/Eastern_Time_Zone'>
-          <strong>EST5EDT</strong>
+          <strong className='ml-1'>EST5EDT</strong>
         </a>
         .
       </p>
