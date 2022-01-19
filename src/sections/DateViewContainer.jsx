@@ -3,19 +3,19 @@ import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import getDateTodayEST from '../utilities/getDateTodayEST';
 import useGetApod from '../hooks/useGetApod';
 import { useRecoilState } from 'recoil';
-import sectionNames from '../recoil/sectionNames';
+import { sectionNames } from '../recoil/sectionNames';
 import { bookmarkListState } from '../recoil/atoms';
 import db from '../db';
 import DateInput from '../containers/date-view/DateInput';
 import MediaContainer from '../containers/date-view/MediaContainer';
 import ErrorMessage from '../components/dateViewSection/ErrorMessage';
+import APODModal from '../components/common/APODModal';
 
 const DateViewContainer = () => {
   const { DateView } = sectionNames;
   useSetSectionNameState(DateView);
 
-  const todayDateString = getDateTodayEST();
-  const [dateInput, setDateInput] = useState(todayDateString);
+  const [dateInput, setDateInput] = useState(getDateTodayEST());
 
   const onClickHandler = (date) => {
     setDateInput(date);
@@ -23,9 +23,10 @@ const DateViewContainer = () => {
 
   const apodData = useGetApod(dateInput);
   const { data } = apodData;
-  const { code, date } = data;
+  const { code, date, title, copyright, explanation, url, media_type } = data;
 
   const [list, setList] = useRecoilState(bookmarkListState);
+  const [isModalOpen, setIsModalOepn] = useState(false);
 
   const addToBookmark = async (item) => {
     try {
@@ -56,6 +57,14 @@ const DateViewContainer = () => {
     }
   };
 
+  const openModalHandler = (e) => {
+    setIsModalOepn(true);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalOepn(false);
+  };
+
   return (
     <main className='DateViewContainer'>
       <h2 className='mb-3 font-extrabold text-2xl text-darkGray border-b border-lightGray'>Date View</h2>
@@ -68,15 +77,19 @@ const DateViewContainer = () => {
         <ErrorMessage code={code} />
       ) : (
         <MediaContainer
-          id={apodData.data.date}
-          title={apodData.data.title}
-          copyright={apodData.data.copyright}
-          date={apodData.data.date}
-          explanation={apodData.data.explanation}
-          url={apodData.data.url}
-          media_type={apodData.data.media_type}
+          id={date}
+          title={title}
+          copyright={copyright}
+          date={date}
+          explanation={explanation}
+          url={url}
+          media_type={media_type}
           bookmarkButtonHandler={bookmarkButtonHandler}
+          openModalHandler={openModalHandler}
         />
+      )}
+      {isModalOpen && (
+        <APODModal url={url} title={title} date={date} explanation={explanation} onClose={closeModalHandler} />
       )}
     </main>
   );

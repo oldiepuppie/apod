@@ -1,6 +1,11 @@
-const sectionNames = Object.freeze({
-  DateView: 'dateView',
-  Bookmark: 'bookmark',
+export const sectionNames = Object.freeze({
+  DateView: 'dateview',
+  Bookmark: 'bookmarks',
 });
 
-export default sectionNames;
+export const sectionHeads = Object.freeze({
+  DateView: 'Date View',
+  Bookmark: 'Bookmarks',
+});
+
+// FIXME 어느 폴더에 들어가야 좋을까?

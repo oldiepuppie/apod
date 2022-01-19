@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import sectionNames from './sectionNames';
+import { sectionNames } from './sectionNames';
 import db from '../db';
 
 const { DateView } = sectionNames;

@@ -1,6 +1,6 @@
-const APODMedia = ({ media_type, title, url }) => {
+const APODMedia = ({ media_type, title, url, style }) => {
   return (
-    <div>
+    <div className={'APODmedia '.concat(style)}>
       {media_type === 'image' ? (
         <img className='astronomyImage' src={url} alt='astronomy' />
       ) : (

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
-import sectionNames from '../recoil/sectionNames';
+import { sectionNames } from '../recoil/sectionNames';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import PictureCard from '../components/bookmarkSection/PictureCard';
 import db from '../db';
@@ -33,8 +33,8 @@ const BookmarkSection = () => {
 
   return (
     <main className='BookmarkSection'>
-      <h2 className='font-black text-2xl border border-black'>Bookmarks Section</h2>
-      <ul className='bookmarkList inline-grid grid-cols-2 gap-4'>
+      <h2 className='mb-3 font-extrabold text-2xl text-darkGray border-b border-lightGray'>Bookmarks</h2>
+      <ul className='bookmarkList grid-rows-1'>
         {list.map((item) => {
           const { url, title, date, explanation, media_type } = item;
           return (

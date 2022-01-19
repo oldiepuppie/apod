@@ -15,7 +15,7 @@ const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDelete
 
   return (
     <div>
-      <div className='PictureCard bg-gray-300 w-2/5 m-4' id={date} onClick={openAPODModal}>
+      <div className='PictureCard' id={date} onClick={openAPODModal}>
         <APODMedia media_type={media_type} title={title} url={url} />
         <h3>{title}</h3>
         <p>{date}</p>
