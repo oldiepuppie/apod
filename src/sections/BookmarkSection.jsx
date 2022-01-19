@@ -22,6 +22,7 @@ const BookmarkSection = () => {
   };
 
   const bookmakrDeleteButtonHandler = (e) => {
+    e.stopPropagation();
     const targetDate = e.target.parentNode.id;
 
     const isBookmarkedItem = list.some((item) => item.date === targetDate);
@@ -32,18 +33,18 @@ const BookmarkSection = () => {
 
   return (
     <main className='BookmarkSection'>
-      <h2 className='font-black text-2xl border-2'>Bookmarks Section</h2>
+      <h2 className='font-black text-2xl border border-black'>Bookmarks Section</h2>
       <ul className='bookmarkList inline-grid grid-cols-2 gap-4'>
         {list.map((item) => {
-          const { url, title, date, explanation, mediaType } = item;
+          const { url, title, date, explanation, media_type } = item;
           return (
             <li className='bookmarkedItem' key={date}>
               <PictureCard
-                src={url}
+                url={url}
                 title={title}
                 date={date}
                 explanation={explanation}
-                mediaType={mediaType}
+                media_type={media_type}
                 bookmakrDeleteButtonHandler={bookmakrDeleteButtonHandler}
               />
             </li>

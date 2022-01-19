@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import HeartButton from '../../components/dateViewSection/HeartButton';
+import APODMedia from '../../components/common/APODmedia';
 import APODModal from '../../components/common/APODModal';
 
 const MediaContainer = ({ title, date, explanation, url, media_type, bookmarkButtonHandler }) => {
-  const [isAPODModalShow, setIsAPODModalShow] = useState();
+  const [isAPODModalShow, setIsAPODModalShow] = useState(false);
 
   const closeAPODModal = () => {
     setIsAPODModalShow(false);
@@ -16,20 +17,7 @@ const MediaContainer = ({ title, date, explanation, url, media_type, bookmarkBut
           <h3 className='title'>{title}</h3>
           <p className='date'>{date}</p>
           <HeartButton size='1.5rem' color='grey' bookmarkButtonHandler={bookmarkButtonHandler} />
-          {media_type === 'image' ? (
-            <img className='astronomyImage' src={url} alt='astronomy' />
-          ) : (
-            <iframe
-              className='apodVideo'
-              title={title}
-              src={url}
-              frameBorder='0'
-              allow='autoplay'
-              width='560px'
-              height='315px'
-              allowFullScreen
-            />
-          )}
+          <APODMedia media_type={media_type} title={title} url={url} />
         </div>
       </div>
       {isAPODModalShow && <APODModal title={title} date={date} explanation={explanation} onClose={closeAPODModal} />}

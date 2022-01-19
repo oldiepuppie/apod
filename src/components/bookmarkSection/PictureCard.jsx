@@ -1,18 +1,37 @@
-/* FIXME
-  - [ ] 모달 구현 및 적용
-  - [ ] 비디오 렌더링 - google api
-*/
+import { useState } from 'react';
+import APODMedia from '../common/APODmedia';
+import APODModal from '../common/APODModal';
 
-const PictureCard = ({ src, title, date, explanation, mediaType, bookmakrDeleteButtonHandler }) => {
-  const dataType = { mediaType }; // TODO control rendering media
-  const description = { explanation }; // TODO for a modal
+const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDeleteButtonHandler }) => {
+  const [isAPODModalShow, setIsAPODModalShow] = useState(false);
+
+  const openAPODModal = () => {
+    setIsAPODModalShow(true);
+  };
+
+  const closeAPODModal = () => {
+    setIsAPODModalShow(false);
+  };
 
   return (
-    <div className='PictureCard bg-gray-300 w-2/5 m-4' id={date}>
-      <img className='w-max' src={src} alt='astronomy' />
-      <h3>{title}</h3>
-      <p>{date}</p>
-      <button onClick={bookmakrDeleteButtonHandler}>delete</button>
+    <div>
+      <div className='PictureCard bg-gray-300 w-2/5 m-4' id={date} onClick={openAPODModal}>
+        <APODMedia media_type={media_type} title={title} url={url} />
+        <h3>{title}</h3>
+        <p>{date}</p>
+        <button onClick={bookmakrDeleteButtonHandler}>delete</button>
+      </div>
+      {isAPODModalShow ? (
+        <APODModal
+          withMedia
+          media_type={media_type}
+          url={url}
+          title={title}
+          date={date}
+          explanation={explanation}
+          onClose={closeAPODModal}
+        />
+      ) : null}
     </div>
   );
 };

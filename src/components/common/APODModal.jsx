@@ -1,15 +1,20 @@
-const APODModal = ({ title, date, explanation, onClose }) => {
+import APODMedia from './APODmedia';
+
+const APODModal = ({ withMedia, media_type, url, title, date, explanation, onClose }) => {
   return (
-    <article className='APODModal'>
-      <div className='modalContents'>
-        <h2 className='modalTitle'>{title}</h2>
-        <h3 className='modalDate'>{date}</h3>
-        <p className='modalDescription'>{explanation}</p>
-      </div>
-      <div className='modalCloseButtonContainer'>
-        <button className='modalCloseButton font-bold' onClick={onClose}>
-          close modal
-        </button>
+    <article className='APODModal border border-red-500'>
+      <div>
+        {withMedia ? <APODMedia media_type={media_type} url={url} title={title} /> : null}
+        <div className='modalContents'>
+          <h3 className='modalTitle'>{title}</h3>
+          <h4 className='modalDate'>{date}</h4>
+          <p className='modalDescription'>{explanation}</p>
+        </div>
+        <div className='modalCloseButtonContainer'>
+          <button className='modalCloseButton font-bold' onClick={onClose}>
+            close modal
+          </button>
+        </div>
       </div>
     </article>
   );
