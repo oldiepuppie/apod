@@ -3,7 +3,10 @@ import APODMedia from '../../components/common/APODmedia';
 
 const MediaContainer = ({ title, copyright, date, url, media_type, openModalHandler, bookmarkButtonHandler }) => {
   return (
-    <figure className='MediaContainer mb-20 text-darkGray' id={date} onClick={openModalHandler}>
+    <figure
+      className='MediaContainer flex flex-col items-center mb-20 text-darkGray'
+      id={date}
+      onClick={openModalHandler}>
       <div className=''>
         <div className='flex justify-between items-center'>
           <div className='w-9/12'>
@@ -12,7 +15,12 @@ const MediaContainer = ({ title, copyright, date, url, media_type, openModalHand
           </div>
           <HeartButton size='2rem' color='grey' bookmarkButtonHandler={bookmarkButtonHandler} />
         </div>
-        <APODMedia media_type={media_type} title={title} url={url} />
+        <APODMedia
+          media_type={media_type}
+          imgStyle={'vp12:flex vp12:flex-row vp12:justify-center vp12:p-16'}
+          title={title}
+          url={url}
+        />
       </div>
     </figure>
   );

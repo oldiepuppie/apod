@@ -66,8 +66,8 @@ const DateViewContainer = () => {
   };
 
   return (
-    <main className='DateViewContainer flex flex-col justify-center items-center'>
-      <h2 className='self-start w-full mb-5 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
+    <main className='DateViewContainer flex flex-col justify-center items-center vp12:mt-2'>
+      <h2 className='self-start w-full mb-5 font-extrabold text-2xl vp12:w-[60vw] text-darkGray border-b border-lightGray'>
         Date View
       </h2>
       <div className='w-[90%]'>

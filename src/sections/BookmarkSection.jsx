@@ -31,8 +31,8 @@ const BookmarkSection = () => {
   };
 
   return (
-    <main className='BookmarkSection flex flex-col justify-center items-center'>
-      <h2 className='self-start w-full mb-5 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
+    <main className='BookmarkSection flex flex-col justify-center items-center vp12:justify-start vp12:mt-2'>
+      <h2 className='self-start w-full mb-5 font-extrabold text-2xl vp12:w-[60vw] text-darkGray border-b border-lightGray'>
         Bookmarks
       </h2>
       <ul className='bookmarkList w-[95%] grid justify-items-center justify-center grid-cols-1 auto-rows-fr	gap-5 vp12:grid-cols-colAutoFill'>
