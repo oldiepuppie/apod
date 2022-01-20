@@ -66,28 +66,32 @@ const DateViewContainer = () => {
   };
 
   return (
-    <main className='DateViewContainer'>
-      <h2 className='mb-3 font-extrabold text-2xl text-darkGray border-b border-lightGray'>Date View</h2>
-      <DateInput onClickHandler={onClickHandler} />
-      {apodData.isGetApodLoading ? (
-        <section className='loadingSpinnerContainer'>
-          <div>Loading...</div>
-        </section>
-      ) : code ? (
-        <ErrorMessage code={code} />
-      ) : (
-        <MediaContainer
-          id={date}
-          title={title}
-          copyright={copyright}
-          date={date}
-          explanation={explanation}
-          url={url}
-          media_type={media_type}
-          bookmarkButtonHandler={bookmarkButtonHandler}
-          openModalHandler={openModalHandler}
-        />
-      )}
+    <main className='DateViewContainer flex flex-col justify-center items-center'>
+      <h2 className='self-start w-full mb-5 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
+        Date View
+      </h2>
+      <div className='w-[90%]'>
+        <DateInput onClickHandler={onClickHandler} />
+        {apodData.isGetApodLoading ? (
+          <section className='loadingSpinnerContainer'>
+            <div>Loading...</div>
+          </section>
+        ) : code ? (
+          <ErrorMessage code={code} />
+        ) : (
+          <MediaContainer
+            id={date}
+            title={title}
+            copyright={copyright}
+            date={date}
+            explanation={explanation}
+            url={url}
+            media_type={media_type}
+            bookmarkButtonHandler={bookmarkButtonHandler}
+            openModalHandler={openModalHandler}
+          />
+        )}
+      </div>
       {isModalOpen && (
         <APODModal url={url} title={title} date={date} explanation={explanation} onClose={closeModalHandler} />
       )}

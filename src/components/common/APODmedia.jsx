@@ -1,8 +1,8 @@
-const APODMedia = ({ media_type, title, url, style }) => {
+const APODMedia = ({ media_type, title, url, imgStyle, imgContainerStyle, videoWidth, videoHeight }) => {
   return (
-    <div className={'APODmedia '.concat(style)}>
+    <div className={`APODmedia ${imgContainerStyle}`}>
       {media_type === 'image' ? (
-        <img className='astronomyImage' src={url} alt='astronomy' />
+        <img className={imgStyle} src={url} alt='astronomy' />
       ) : (
         <iframe
           className='apodVideo'
@@ -10,8 +10,8 @@ const APODMedia = ({ media_type, title, url, style }) => {
           src={url}
           frameBorder='0'
           allow='autoplay'
-          width='560px'
-          height='315px'
+          width={videoWidth ? videoWidth : '560px'}
+          height={videoHeight ? videoHeight : '315px'}
           allowFullScreen
         />
       )}

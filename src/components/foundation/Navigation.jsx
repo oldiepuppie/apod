@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 const Navigation = () => {
   return (
-    <nav className='Navigation sticky top-0  mb-12 w-screen bg-bgGray border-black'>
-      <ul className='flex-col mb-12'>
+    <nav className='Navigation mb-12 sticky top-0 bg-bgGray border-black'>
+      <ul className='flex-col py-3 mb-12'>
         <li className='font-bold text-xl'>
           <Link to='dateview'>Date View</Link>
         </li>

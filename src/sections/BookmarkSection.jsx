@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useRecoilValue, useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
 import { sectionNames } from '../recoil/sectionNames';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
@@ -32,22 +31,23 @@ const BookmarkSection = () => {
   };
 
   return (
-    <main className='BookmarkSection'>
-      <h2 className='mb-3 font-extrabold text-2xl text-darkGray border-b border-lightGray'>Bookmarks</h2>
-      <ul className='bookmarkList grid-rows-1'>
+    <main className='BookmarkSection flex flex-col justify-center items-center'>
+      <h2 className='self-start w-full mb-5 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
+        Bookmarks
+      </h2>
+      <ul className='bookmarkList w-[95%] grid justify-items-center justify-center grid-cols-1 auto-rows-fr	gap-5 vp12:grid-cols-colAutoFill'>
         {list.map((item) => {
           const { url, title, date, explanation, media_type } = item;
           return (
-            <li className='bookmarkedItem' key={date}>
-              <PictureCard
-                url={url}
-                title={title}
-                date={date}
-                explanation={explanation}
-                media_type={media_type}
-                bookmakrDeleteButtonHandler={bookmakrDeleteButtonHandler}
-              />
-            </li>
+            <PictureCard
+              key={date}
+              url={url}
+              title={title}
+              date={date}
+              explanation={explanation}
+              media_type={media_type}
+              bookmakrDeleteButtonHandler={bookmakrDeleteButtonHandler}
+            />
           );
         })}
       </ul>
