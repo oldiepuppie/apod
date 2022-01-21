@@ -17,7 +17,6 @@
   - [x] 시차를 고려해서 데이터 불러오기
 ### Deploy
   - [x] Vercel
-  - [ ] 도메인 구입 및 적용
 
 ## Ref.
 - [Creating an animated SVG spinner - Cody Lindsay Gorden](https://medium.com/@clg/animated-svg-spinner-8dff32d310fc)

@@ -1,9 +1,5 @@
 import { useEffect, useState } from 'react';
 
-/* FIXME
-  - [ ] apodData, data, date 등 depth가 조금 깊고, 이름이 혼동됨. 이해하기 쉽도록 변경 가능해보임
-*/
-
 const useGetApod = (date) => {
   const [isGetApodLoading, setIsGetApodLoading] = useState(false);
   const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);

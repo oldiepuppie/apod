@@ -3,9 +3,6 @@ import APODMedia from '../common/APODmedia';
 import APODModal from '../common/APODModal';
 import { ReactComponent as DeleteIcon } from '../../svg/deleteIcon.svg';
 
-// TODO
-// 버튼에 아이콘 사용
-
 const PictureCard = ({ url, title, date, explanation, copyright, media_type, bookmakrDeleteButtonHandler }) => {
   const [isAPODModalShow, setIsAPODModalShow] = useState(false);
 
@@ -21,6 +18,7 @@ const PictureCard = ({ url, title, date, explanation, copyright, media_type, boo
     <li className='PictureCard w-[70vw] h-[103vw] flex flex-col justify-between p-5 pb-0 vp12:w-[17vw] vp12:h-[23vw] bg-white text-darkGray'>
       <div id={date} onClick={openAPODModal}>
         <APODMedia
+          isInCard
           imgContainerStyle={'flex justify-center'}
           imgStyle={'w-[65vw] h-[65vw] object-fit mb-2 vp12:w-[15vw] vp12:h-[15vw]'}
           media_type={media_type}

@@ -5,11 +5,6 @@ import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import PictureCard from '../components/bookmarkSection/PictureCard';
 import db from '../db';
 
-/* TODO
-  - vp12
-    [ ] ul을 왼쪽으로 붙이기
-*/
-
 const BookmarkSection = () => {
   const { Bookmark } = sectionNames;
   useSetSectionNameState(Bookmark);

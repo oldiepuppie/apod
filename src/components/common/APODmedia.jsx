@@ -1,11 +1,22 @@
-const APODMedia = ({ media_type, title, url, imgStyle, imgContainerStyle, videoWidth, videoHeight }) => {
+const APODMedia = ({
+  media_type,
+  title,
+  url,
+  imgStyle,
+  imgContainerStyle,
+  videoWidth,
+  videoHeight,
+  isInModal,
+  isInCard,
+}) => {
   return (
-    <div className={`APODmedia ${imgContainerStyle ? imgContainerStyle : ''}`}>
+    <div
+      className={`APODmedia${imgContainerStyle ? ' ' + imgContainerStyle : ''}${isInModal && ' flex justify-center'}`}>
       {media_type === 'image' ? (
         <img className={imgStyle} src={url} alt='astronomy' />
       ) : (
         <iframe
-          className='apodVideo'
+          className={`${isInCard ? 'aspect-square ' : 'aspect-video '}${isInModal ? ' w-5/6' : ' w-[100%]'} h-auto`}
           title={title}
           src={url}
           frameBorder='0'
