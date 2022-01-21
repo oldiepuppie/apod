@@ -8,10 +8,12 @@ function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className='App flex flex-col w-screen min-h-screen p-10 vp12:items-center bg-bgGray'>
-          <Header>Astronomy Picture Of the Day</Header>
+        <div className='App flex flex-col w-screen min-h-screen p-3 vp12:p-20 vp12:items-center bg-bgGray'>
           <div className='vp12:flex vp12:flex-row'>
-            <Navigation />
+            <div className='vp12:flex vp12:flex-col pr-20 whitespace-pre-line	'>
+              <Header>{'Astronomy\n Picture\n Of the Day'}</Header>
+              <Navigation />
+            </div>
             <Routes>
               <Route exact path='/' element={<Navigate to='/dateview' />}></Route>
               <Route path='/dateview' element={<DateViewContainer />}></Route>
