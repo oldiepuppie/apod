@@ -33,8 +33,8 @@ const PictureCard = ({ url, title, date, explanation, copyright, media_type, boo
             <h3 className='font-bold text-md mb-2'>{title}</h3>
             <p className='text-sm'>{date}</p>
           </div>
-          <button onClick={bookmakrDeleteButtonHandler}>
-            <DeleteIcon className={'fill-darkGray hover:fill-red w-5 h-auto'} />
+          <button id={date} onClick={bookmakrDeleteButtonHandler}>
+            <DeleteIcon id={date} className={'fill-darkGray hover:fill-red w-5 h-auto'} />
           </button>
         </div>
       </div>

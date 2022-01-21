@@ -22,8 +22,7 @@ const BookmarkSection = () => {
 
   const bookmakrDeleteButtonHandler = (e) => {
     e.stopPropagation();
-    const targetDate = e.target.parentNode.id;
-
+    const targetDate = e.target.id || e.target.parentNode.id;
     const isBookmarkedItem = list.some((item) => item.date === targetDate);
     if (isBookmarkedItem) {
       removeFromBookmark(targetDate);

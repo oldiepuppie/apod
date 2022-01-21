@@ -1,7 +1,16 @@
 import HeartButton from '../../components/dateViewSection/HeartButton';
 import APODMedia from '../../components/common/APODmedia';
 
-const MediaContainer = ({ title, copyright, date, url, media_type, openModalHandler, bookmarkButtonHandler }) => {
+const MediaContainer = ({
+  title,
+  copyright,
+  date,
+  url,
+  media_type,
+  openModalHandler,
+  bookmarkButtonHandler,
+  isMarked,
+}) => {
   return (
     <figure
       className='MediaContainer flex flex-col items-center mb-20 text-darkGray'
@@ -13,7 +22,7 @@ const MediaContainer = ({ title, copyright, date, url, media_type, openModalHand
             <h3 className='font-bold text-xl mb-2'>{title}</h3>
             <p className='text-sm'>{copyright}</p>
           </div>
-          <HeartButton size='2rem' color='grey' bookmarkButtonHandler={bookmarkButtonHandler} />
+          <HeartButton bookmarkButtonHandler={bookmarkButtonHandler} isMarked={isMarked} />
         </div>
         <APODMedia
           media_type={media_type}
