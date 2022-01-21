@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
-        <div className='App w-screen min-h-screen p-10 bg-bgGray'>
+        <div className='App flex flex-col w-screen min-h-screen p-10 vp12:items-center bg-bgGray'>
           <Header>Astronomy Picture Of the Day</Header>
           <div className='vp12:flex vp12:flex-row'>
             <Navigation />

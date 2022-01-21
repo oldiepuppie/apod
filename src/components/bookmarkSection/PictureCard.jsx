@@ -5,9 +5,8 @@ import { ReactComponent as DeleteIcon } from '../../svg/deleteIcon.svg';
 
 // TODO
 // 버튼에 아이콘 사용
-// grid 정리
 
-const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDeleteButtonHandler }) => {
+const PictureCard = ({ url, title, date, explanation, copyright, media_type, bookmakrDeleteButtonHandler }) => {
   const [isAPODModalShow, setIsAPODModalShow] = useState(false);
 
   const openAPODModal = () => {
@@ -19,11 +18,11 @@ const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDelete
   };
 
   return (
-    <li className='PictureCard w-[70vw] h-[103vw] flex flex-col justify-around p-5 pb-0 vp12:w-[25vw] vp12:h-auto bg-white text-darkGray'>
+    <li className='PictureCard w-[70vw] h-[103vw] flex flex-col justify-between p-5 pb-0 vp12:w-[17vw] vp12:h-[23vw] bg-white text-darkGray'>
       <div id={date} onClick={openAPODModal}>
         <APODMedia
           imgContainerStyle={'flex justify-center'}
-          imgStyle={'w-[65vw] h-[65vw] object-fit mb-2 vp12:w-[22vw] vp12:h-[22vw]'}
+          imgStyle={'w-[65vw] h-[65vw] object-fit mb-2 vp12:w-[15vw] vp12:h-[15vw]'}
           media_type={media_type}
           title={title}
           url={url}
@@ -34,7 +33,7 @@ const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDelete
             <p className='text-sm'>{date}</p>
           </div>
           <button onClick={bookmakrDeleteButtonHandler}>
-            <DeleteIcon className={'fill-darkGray hover:fill-red'} width='1.25rem' height='1.25rem' fill='#555555' />
+            <DeleteIcon className={'fill-darkGray hover:fill-red w-5 h-auto'} />
           </button>
         </div>
       </div>
@@ -43,6 +42,7 @@ const PictureCard = ({ url, title, date, explanation, media_type, bookmakrDelete
           media_type={media_type}
           url={url}
           title={title}
+          copyright={copyright}
           date={date}
           explanation={explanation}
           onClose={closeAPODModal}

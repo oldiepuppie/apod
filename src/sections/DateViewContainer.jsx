@@ -66,8 +66,8 @@ const DateViewContainer = () => {
   };
 
   return (
-    <main className='DateViewContainer flex flex-col justify-center items-center vp12:mt-2'>
-      <h2 className='self-start w-full mb-5 font-extrabold text-2xl vp12:w-[60vw] text-darkGray border-b border-lightGray'>
+    <main className='DateViewContainer flex flex-col justify-center items-center vp12:w-[40vw] vp12:mt-2'>
+      <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
         Date View
       </h2>
       <div className='w-[90%]'>
@@ -93,7 +93,14 @@ const DateViewContainer = () => {
         )}
       </div>
       {isModalOpen && (
-        <APODModal url={url} title={title} date={date} explanation={explanation} onClose={closeModalHandler} />
+        <APODModal
+          url={url}
+          title={title}
+          date={date}
+          copyright={copyright}
+          explanation={explanation}
+          onClose={closeModalHandler}
+        />
       )}
     </main>
   );

@@ -18,7 +18,7 @@ module.exports = {
     },
     extend: {
       gridTemplateColumns: {
-        colAutoFill: 'repeat(auto-fill, 25vw)',
+        colAutoFill: 'repeat(auto-fill, 17vw)',
       },
     },
   },

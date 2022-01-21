@@ -1,6 +1,6 @@
 const APODMedia = ({ media_type, title, url, imgStyle, imgContainerStyle, videoWidth, videoHeight }) => {
   return (
-    <div className={`APODmedia ${imgContainerStyle}`}>
+    <div className={`APODmedia ${imgContainerStyle ? imgContainerStyle : ''}`}>
       {media_type === 'image' ? (
         <img className={imgStyle} src={url} alt='astronomy' />
       ) : (

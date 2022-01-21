@@ -5,6 +5,11 @@ import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import PictureCard from '../components/bookmarkSection/PictureCard';
 import db from '../db';
 
+/* TODO
+  - vp12
+    [ ] ul을 왼쪽으로 붙이기
+*/
+
 const BookmarkSection = () => {
   const { Bookmark } = sectionNames;
   useSetSectionNameState(Bookmark);
@@ -31,19 +36,20 @@ const BookmarkSection = () => {
   };
 
   return (
-    <main className='BookmarkSection flex flex-col justify-center items-center vp12:justify-start vp12:mt-2'>
-      <h2 className='self-start w-full mb-5 font-extrabold text-2xl vp12:w-[60vw] text-darkGray border-b border-lightGray'>
+    <main className='BookmarkSection flex flex-col justify-center items-center vp12:w-[40vw] vp12:mt-2'>
+      <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-b-lightGray'>
         Bookmarks
       </h2>
-      <ul className='bookmarkList w-[95%] grid justify-items-center justify-center grid-cols-1 auto-rows-fr	gap-5 vp12:grid-cols-colAutoFill'>
+      <ul className='bookmarkList w-[95%] grid justify-items-center justify-center grid-cols-1 auto-rows-fr	gap-8 vp12:grid-cols-colAutoFill vp12:gap-12'>
         {list.map((item) => {
-          const { url, title, date, explanation, media_type } = item;
+          const { url, title, date, explanation, media_type, copyright } = item;
           return (
             <PictureCard
               key={date}
               url={url}
               title={title}
               date={date}
+              copyright={copyright}
               explanation={explanation}
               media_type={media_type}
               bookmakrDeleteButtonHandler={bookmakrDeleteButtonHandler}

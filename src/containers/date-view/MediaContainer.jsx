@@ -7,17 +7,17 @@ const MediaContainer = ({ title, copyright, date, url, media_type, openModalHand
       className='MediaContainer flex flex-col items-center mb-20 text-darkGray'
       id={date}
       onClick={openModalHandler}>
-      <div className=''>
-        <div className='flex justify-between items-center'>
-          <div className='w-9/12'>
+      <div className='vp12:w-[27.5vw]'>
+        <div className='flex flex-row justify-between items-center mb-5'>
+          <div className=''>
             <h3 className='font-bold text-xl mb-2'>{title}</h3>
-            <p className='text-sm mb-5'>{copyright}</p>
+            <p className='text-sm'>{copyright}</p>
           </div>
           <HeartButton size='2rem' color='grey' bookmarkButtonHandler={bookmarkButtonHandler} />
         </div>
         <APODMedia
           media_type={media_type}
-          imgStyle={'vp12:flex vp12:flex-row vp12:justify-center vp12:p-16'}
+          imgStyle={'vp12:flex vp12:flex-row vp12:justify-center vp12:mt-4'}
           title={title}
           url={url}
         />
