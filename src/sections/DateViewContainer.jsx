@@ -3,7 +3,7 @@ import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import getDateTodayEST from '../utilities/getDateTodayEST';
 import useGetApod from '../hooks/useGetApod';
 import { useRecoilState } from 'recoil';
-import { sectionNames } from '../recoil/sectionNames';
+import SectionNamesEnum from '../recoil/SectionNamesEnum';
 import { bookmarkListState } from '../recoil/atoms';
 import db from '../db';
 import DateInput from '../containers/date-view/DateInput';
@@ -12,44 +12,25 @@ import ErrorMessage from '../components/dateViewSection/ErrorMessage';
 import APODModal from '../components/common/APODModal';
 
 const DateViewContainer = () => {
-  const { DateView } = sectionNames;
-  useSetSectionNameState(DateView);
+  useSetSectionNameState(SectionNamesEnum.DateView);
 
   const [dateInput, setDateInput] = useState(getDateTodayEST());
-  const [list, setList] = useRecoilState(bookmarkListState);
+  const [bookmarkList, setBookmarkList] = useRecoilState(bookmarkListState);
   const [isModalOpen, setIsModalOepn] = useState(false);
 
-  const onClickHandler = (date) => {
+  const onDateInputSubmitClick = (date) => {
     setDateInput(date);
   };
 
   const apodData = useGetApod(dateInput);
   const { data } = apodData;
   const { code, date, title, copyright, explanation, url, media_type } = data;
-
-  const getIsBookmarked = (date) => {
-    return list.some((item) => item.date === date);
-  };
-  const [isMarked, setIsMarked] = useState(getIsBookmarked(date));
-  /* FIXME
-    ## 의도
-    DateView에서 북마크 버튼 클릭
-      -> 북마크 추가, isMarked를 true로 변경
-      -> 북마크 버튼 색상을 빨간색으로 변경, 북마크를 삭제할 때까지 빨간색으로 유지
-
-    ## 문제
-    다른 페이지에서 DateView로 돌아오면 isMarked의 상태가 유지되지 않는다
-
-    ## 시도
-    - `console.log(isMarked)`, `console.log(getIsBookmarked(date))`
-      - false가 여러 개 나오다가 데이터가 렌더링 될 때 즈음 true가 나오면서 동작을 멈춘다
-      - 어쨌든 true로 끝이 나니까 true에 맞춰서 빨간색이 보여야 할 것 같은데 그렇지 않다
-  */
+  const isBookmarked = bookmarkList.some((item) => item.date === date);
 
   const addToBookmark = async (item) => {
     try {
       await db.bookmarkedItems.add(item);
-      setList([item, ...list]);
+      setBookmarkList([item, ...bookmarkList]);
     } catch (error) {
       alert(error);
     }
@@ -58,7 +39,7 @@ const DateViewContainer = () => {
   const removeFromBookmark = async (date) => {
     try {
       await db.bookmarkedItems.delete(date);
-      setList(list.filter((item) => item.date !== date));
+      setBookmarkList(bookmarkList.filter((item) => item.date !== date));
     } catch (error) {
       alert(error);
     }
@@ -67,16 +48,14 @@ const DateViewContainer = () => {
   const bookmarkButtonHandler = (e) => {
     e.stopPropagation();
 
-    if (!getIsBookmarked(date)) {
+    if (!isBookmarked) {
       addToBookmark(data);
-      setIsMarked(true);
     } else {
       removeFromBookmark(date);
-      setIsMarked(false);
     }
   };
 
-  const openModalHandler = (e) => {
+  const openModalHandler = () => {
     setIsModalOepn(true);
   };
 
@@ -90,7 +69,7 @@ const DateViewContainer = () => {
         Date View
       </h2>
       <div className='w-[90%]'>
-        <DateInput onClickHandler={onClickHandler} />
+        <DateInput onDateInputSubmitClick={onDateInputSubmitClick} />
         {apodData.isGetApodLoading ? (
           <section className='loadingSpinnerContainer'>
             <div>Loading...</div>
@@ -108,7 +87,7 @@ const DateViewContainer = () => {
             media_type={media_type}
             bookmarkButtonHandler={bookmarkButtonHandler}
             openModalHandler={openModalHandler}
-            isMarked={isMarked}
+            isBookmarked={isBookmarked}
           />
         )}
       </div>

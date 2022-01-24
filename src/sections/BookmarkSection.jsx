@@ -1,13 +1,12 @@
 import { useRecoilState } from 'recoil';
 import { bookmarkListState } from '../recoil/atoms';
-import { sectionNames } from '../recoil/sectionNames';
+import SectionNamesEnum from '../recoil/SectionNamesEnum';
 import useSetSectionNameState from '../hooks/useSetSectionNameState';
 import PictureCard from '../components/bookmarkSection/PictureCard';
 import db from '../db';
 
 const BookmarkSection = () => {
-  const { Bookmark } = sectionNames;
-  useSetSectionNameState(Bookmark);
+  useSetSectionNameState(SectionNamesEnum.Bookmark);
 
   const [list, setList] = useRecoilState(bookmarkListState);
 
@@ -35,8 +34,7 @@ const BookmarkSection = () => {
         Bookmarks
       </h2>
       <ul className='bookmarkList w-[95%] grid justify-items-center justify-center grid-cols-1 auto-rows-fr	gap-8 vp12:grid-cols-colAutoFill vp12:gap-12'>
-        {list.map((item) => {
-          const { url, title, date, explanation, media_type, copyright } = item;
+        {list.map(({ url, title, date, explanation, media_type, copyright }) => {
           return (
             <PictureCard
               key={date}

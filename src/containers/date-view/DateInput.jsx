@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import getDateTodayEST from '../../utilities/getDateTodayEST';
 
-const DateInput = ({ onClickHandler }) => {
+const DateInput = ({ onDateInputSubmitClick }) => {
   const todayDateString = getDateTodayEST();
   const [dateInput, setDateInput] = useState(todayDateString);
 
@@ -10,7 +10,7 @@ const DateInput = ({ onClickHandler }) => {
   };
 
   const buttonHandler = () => {
-    onClickHandler(dateInput);
+    onDateInputSubmitClick(dateInput);
   };
 
   const inputKeyPressHandler = (e) => {

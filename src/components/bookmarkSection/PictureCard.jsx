@@ -38,7 +38,7 @@ const PictureCard = ({ url, title, date, explanation, copyright, media_type, boo
           </button>
         </div>
       </div>
-      {isAPODModalShow ? (
+      {isAPODModalShow && (
         <APODModal
           media_type={media_type}
           url={url}
@@ -48,7 +48,7 @@ const PictureCard = ({ url, title, date, explanation, copyright, media_type, boo
           explanation={explanation}
           onClose={closeAPODModal}
         />
-      ) : null}
+      )}
     </li>
   );
 };

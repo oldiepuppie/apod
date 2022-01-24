@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 
 const useGetApod = (date) => {
   const [isGetApodLoading, setIsGetApodLoading] = useState(false);
-  const [isGetApodLoaded, setIsGetApodLoaded] = useState(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const useGetApod = (date) => {
       );
 
       setIsGetApodLoading(false);
-      setIsGetApodLoaded(true);
 
       const data = await response.json();
       setData(data);
@@ -25,7 +23,7 @@ const useGetApod = (date) => {
     getApod();
   }, [date]);
 
-  return { isGetApodLoading, isGetApodLoaded, data };
+  return { isGetApodLoading, data };
 };
 
 export default useGetApod;

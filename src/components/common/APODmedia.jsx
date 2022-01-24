@@ -21,8 +21,8 @@ const APODMedia = ({
           src={url}
           frameBorder='0'
           allow='autoplay'
-          width={videoWidth ? videoWidth : '560px'}
-          height={videoHeight ? videoHeight : '315px'}
+          width={videoWidth ?? '560px'}
+          height={videoHeight ?? '315px'}
           allowFullScreen
         />
       )}

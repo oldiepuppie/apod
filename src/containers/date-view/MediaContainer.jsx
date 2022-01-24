@@ -9,7 +9,7 @@ const MediaContainer = ({
   media_type,
   openModalHandler,
   bookmarkButtonHandler,
-  isMarked,
+  isBookmarked,
 }) => {
   return (
     <figure
@@ -18,11 +18,11 @@ const MediaContainer = ({
       onClick={openModalHandler}>
       <div className='vp12:w-[27.5vw]'>
         <div className='flex flex-row justify-between items-center mb-5'>
-          <div className=''>
+          <div>
             <h3 className='font-bold text-xl mb-2'>{title}</h3>
             <p className='text-sm'>{copyright}</p>
           </div>
-          <HeartButton bookmarkButtonHandler={bookmarkButtonHandler} isMarked={isMarked} />
+          <HeartButton bookmarkButtonHandler={bookmarkButtonHandler} isBookmarked={isBookmarked} />
         </div>
         <APODMedia
           media_type={media_type}

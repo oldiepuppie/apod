@@ -1,12 +1,10 @@
 import { atom } from 'recoil';
-import { sectionNames } from './sectionNames';
+import SectionNamesEnum from './SectionNamesEnum';
 import db from '../db';
-
-const { DateView } = sectionNames;
 
 export const sectionNameState = atom({
   key: 'sectionNameState',
-  default: DateView,
+  default: SectionNamesEnum.DateView,
 });
 
 const test = async () => {
