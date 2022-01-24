@@ -14,9 +14,6 @@ const PictureCard = ({ url, title, date, explanation, copyright, media_type, boo
     setIsAPODModalShow(false);
   };
 
-  // w-full aspect-[4/3]
-  // w-[70vw] h-[103vw]
-
   return (
     <li className='PictureCard w-5/6 aspect-[3/3.75] h-auto flex flex-col justify-evenly items-center p-3 pb-0 vp12:w-full vp12:h-full  bg-white text-darkGray'>
       <div id={date} onClick={openAPODModal}>
