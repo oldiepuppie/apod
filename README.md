@@ -1,24 +1,50 @@
 # APOD (Astronomy Picture of the Day)
+나사에서 제공하는 천체 사진을 감상해보세요.
 
-## Used
+매일 하나씩 업데이트됩니다.
+
+## URL
+https://apod-oldiepuppie.vercel.app/
+
+## Tech Used
 - React
+- Recoil
 - TailwindCSS
-- NASA API
-  - APOD (Astronomy Picture of the Day)
+- NASA APOD (Astronomy Picture of the Day) API
 
-## TODO
-### UI
-  - [ ] 디자인 라이브러리 대체 - Tailwind CSS로 스타일 작성
-    - [x] Settings
-    - [ ] UI
-  - [ ] 반응형
-### Functions
-  - [ ] 상태 관리
-  - [x] 시차를 고려해서 데이터 불러오기
-### Deploy
-  - [x] Vercel
+## Functions
+### By Date
+  - 날짜별 사진 보기
+  - 제목이나 사진을 클릭하면 설명이 담긴 모달 오픈
+  - 하트 버튼을 클릭하여 북마크에 추가/제거
+### Bookmarks
+  - By Date에서 추가한 북마크 확인
+  - 카드를 클릭하면 큰 사이즈의 사진과 설명이 담긴 모달 오픈
+  - 카드의 Ⓧ 버튼을 클릭하면 목록에서 제거
 
-## Ref.
-- [Creating an animated SVG spinner - Cody Lindsay Gorden](https://medium.com/@clg/animated-svg-spinner-8dff32d310fc)
-- [자바스크립트에서 타임존 다루기 (1)
-](https://meetup.toast.com/posts/125)
+## 미리보기
+### By Date
+- Small
+
+
+- 모달 오픈
+
+
+- Large
+
+
+- 모달 오픈
+
+
+### Bookmarks
+- Small
+
+
+- 모달 오픈
+
+
+- Large
+
+
+- 모달 오픈
+

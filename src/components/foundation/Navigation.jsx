@@ -12,7 +12,7 @@ const Navigation = () => {
         <li className={`font-bold text-xl`}>
           <Link to='dateview'>
             <span className={`hover:text-green ${currentSection === SectionNamesEnum.DateView && 'text-green'}`}>
-              Date View
+              By Date
             </span>
           </Link>
         </li>
