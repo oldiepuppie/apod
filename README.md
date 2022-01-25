@@ -22,29 +22,18 @@ https://apod-oldiepuppie.vercel.app/
   - 카드를 클릭하면 큰 사이즈의 사진과 설명이 담긴 모달 오픈
   - 카드의 Ⓧ 버튼을 클릭하면 목록에서 제거
 
-## 미리보기
+## Brief View
 ### By Date
 - Small
-
-
-- 모달 오픈
-
+<img width="30%" alt="small-dateview" src="https://user-images.githubusercontent.com/61111156/151052895-b82a6312-80d7-42d1-afae-ab905b398924.png">
 
 - Large
-
-
-- 모달 오픈
-
+<img width="80%" alt="large-a-dateview" src="https://user-images.githubusercontent.com/61111156/151053071-14e0c22d-24a7-47ce-8335-9483498acc74.png">
 
 ### Bookmarks
 - Small
-
-
-- 모달 오픈
-
+<img width="30%" alt="small-bookmarks" src="https://user-images.githubusercontent.com/61111156/151052917-5d0ab698-4158-440f-8ee9-6ab2f72a96c0.png">
 
 - Large
-
-
-- 모달 오픈
+<img width="80%" alt="large-b-bookmarks" src="https://user-images.githubusercontent.com/61111156/151053026-4be24107-9a1b-46d2-b4ec-3412af6a97a1.png">
 
