@@ -66,7 +66,7 @@ const DateViewContainer = () => {
   return (
     <main className='DateViewContainer flex flex-col justify-center items-center vp12:w-[40vw] vp12:mt-2'>
       <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
-        Date View
+        By Date
       </h2>
       <div className='w-[90%]'>
         <DateInput onDateInputSubmitClick={onDateInputSubmitClick} />
