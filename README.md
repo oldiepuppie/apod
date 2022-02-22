@@ -22,6 +22,10 @@ https://apod-oldiepuppie.vercel.app/
   - 카드를 클릭하면 큰 사이즈의 사진과 설명이 담긴 모달 오픈
   - 카드의 Ⓧ 버튼을 클릭하면 목록에서 제거
 
+
+## Worklog
+[APOD V2](https://oldiepuppie.notion.site/APOD-V2-afee6c43d89841e79159730b16a047e3)
+
 ## Brief View
 ### By Date
 - Small
