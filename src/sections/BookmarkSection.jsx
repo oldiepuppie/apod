@@ -29,7 +29,7 @@ const BookmarkSection = () => {
   };
 
   return (
-    <main className='BookmarkSection flex flex-col justify-center items-center pb-28 vp12:w-[40vw] vp12:mt-2'>
+    <main className='BookmarkSection flex flex-col items-center pb-28 vp12:w-[40vw] vp12:mt-2'>
       <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-b-lightGray'>
         Bookmarks
       </h2>
