@@ -11,7 +11,9 @@ const APODMedia = ({
 }) => {
   return (
     <div
-      className={`APODmedia${imgContainerStyle ? ' ' + imgContainerStyle : ''}${isInModal && ' flex justify-center'}`}>
+      className={`APODmedia${imgContainerStyle ? ' ' + imgContainerStyle : ''}${
+        isInModal ? ' flex justify-center' : ''
+      }`}>
       {media_type === 'image' ? (
         <img className={imgStyle} src={url} alt='astronomy' />
       ) : (

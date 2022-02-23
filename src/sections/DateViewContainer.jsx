@@ -10,6 +10,7 @@ import DateInput from '../containers/date-view/DateInput';
 import MediaContainer from '../containers/date-view/MediaContainer';
 import ErrorMessage from '../components/dateViewSection/ErrorMessage';
 import APODModal from '../components/common/APODModal';
+import LoadingSkeleton from '../components/dateViewSection/LoadingSkeleton';
 
 const DateViewContainer = () => {
   useSetSectionNameState(SectionNamesEnum.DateView);
@@ -29,6 +30,7 @@ const DateViewContainer = () => {
 
   const addToBookmark = async (item) => {
     try {
+      item.createdAt = new Date();
       await db.bookmarkedItems.add(item);
       setBookmarkList([item, ...bookmarkList]);
     } catch (error) {
@@ -68,12 +70,10 @@ const DateViewContainer = () => {
       <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
         By Date
       </h2>
-      <div className='w-[90%]'>
+      <div className='w-[90%] flex flex-col justify-center items-center'>
         <DateInput onDateInputSubmitClick={onDateInputSubmitClick} />
         {apodData.isGetApodLoading ? (
-          <section className='loadingSpinnerContainer'>
-            <div>Loading...</div>
-          </section>
+          <LoadingSkeleton />
         ) : code ? (
           <ErrorMessage code={code} />
         ) : (
@@ -91,6 +91,7 @@ const DateViewContainer = () => {
           />
         )}
       </div>
+
       {isModalOpen && (
         <APODModal
           url={url}
