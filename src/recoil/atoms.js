@@ -7,12 +7,13 @@ export const sectionNameState = atom({
   default: SectionNamesEnum.DateView,
 });
 
-const test = async () => {
+const getBookmarkListFromDB = async () => {
   const bookmarkedItemsFromDB = await db.bookmarkedItems.toArray();
-  return bookmarkedItemsFromDB;
+  const sortedBookmarksList = await bookmarkedItemsFromDB.sort((a, b) => b.createdAt - a.createdAt);
+  return sortedBookmarksList;
 };
 
 export const bookmarkListState = atom({
   key: 'bookmarkListState',
-  default: test(),
+  default: getBookmarkListFromDB(),
 });

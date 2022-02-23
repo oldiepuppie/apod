@@ -30,6 +30,7 @@ const DateViewContainer = () => {
 
   const addToBookmark = async (item) => {
     try {
+      item.createdAt = new Date();
       await db.bookmarkedItems.add(item);
       setBookmarkList([item, ...bookmarkList]);
     } catch (error) {
