@@ -70,7 +70,7 @@ const DateViewContainer = () => {
       <h2 className='self-start w-full mb-10 font-extrabold text-2xl text-darkGray border-b border-lightGray'>
         By Date
       </h2>
-      <div className='w-[90%] flex flex-col justify-center items-center'>
+      <div className='w-[90%] flex flex-col items-center'>
         <DateInput onDateInputSubmitClick={onDateInputSubmitClick} />
         {apodData.isGetApodLoading ? (
           <LoadingSkeleton />

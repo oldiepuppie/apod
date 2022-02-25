@@ -4,7 +4,7 @@ import APODMedia from './APODmedia';
 const APODModal = ({ media_type, url, title, copyright, date, explanation, onClose }) => {
   return (
     <article className='APODModal w-screen h-screen fixed top-0 left-0 flex justify-center items-center bg-transparentBlack text-darkGray'>
-      <div className='w-5/6 h-5/6 overflow-auto px-5 bg-bgGray border rounded-md vp12:w-1/3 vp12:h-4/6'>
+      <div className='w-5/6 h-5/6 overflow-auto px-5 pb-7 bg-bgGray border rounded-md vp12:w-1/3 vp12:h-4/6'>
         <button
           className='modalCloseButton flex flex-row-reverse sticky top-0 w-full p-5 text-right font-bold bg-bgGray'
           onClick={onClose}>
